@@ -1,7 +1,5 @@
 # Summary‌
 
-## Replay and cancel transactions
-
-* [Replay](replay/README.md)
+## [Replay and cancel transactions](replay/README.md)
 
 ## [Glossary](GLOSSARY.md)
