@@ -16,4 +16,23 @@ Here would be an example of the steps to replay a transaction:
 
 Obviously Rockside relayer does it for you!
 
-Rockside monitors transactions to check those which are pending for too long. The relayer then auto replay them by carefully adapting to a new gas price, depending on how fast one wants the transaction included.
+Rockside monitors transactions to check those which are pending for too long.
+
+We then auto replay them by carefully adapting to a new gas price, depending on how fast one wants the transaction included.
+
+# Rockside Replay
+
+Following [Eth Gas Station](https://ethgasstation.info) recommendations, we have roughly four modes in which a transaction can be played/replayed.
+
+* `safe low`: mined in around 30 mins
+* `standard`: mined in around 5 mins
+* `fast`: mined in around 2 mins
+* `fastest`: mined in around 30 seconds
+
+The price for each of those modes obviously varies according to the current congestion of the Ethereum network.
+
+When you first send a transaction to Rockside, you specify a `mode` (which translates to a deadline of inclusion in the blockchain) and a `maximum gas price` you are willing to pay.
+
+Monitoring your transaction, if Rockside sees it is not going to make it. we upgrade the mode according to be able to reach your deadline, Rockside paying for the extra costs.
+
+Of course, Rockside paying for the extra costs (for your transaction to be included in time), we reserved the right to refuse a transaction when you first send it to us. Usually because the maximum gas price your are willing to pay does not reflect the current state of the network. Our API would obviously explains why a transaction was refused.
