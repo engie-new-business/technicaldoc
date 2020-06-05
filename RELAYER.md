@@ -22,7 +22,7 @@ We designed a solution with a new approach to get rid of this situation
 
 ### Connect to Rockside
 
-Go to dashboard.rockside.io and connect using your github account.
+Go to [dashboard.rockside.io](https://dashboard.rockside.io) and connect using your github account.
 You will get your API KEY that will allow you to access Rockside API.
 
 ### Deploy your forwarder contract
@@ -122,12 +122,13 @@ Signature: 0xf68b22a18b28ec88751a270ba1575634134f09847ed36587fbc51d5d2de1aef927d
 Call rockside API to relay your transaction:
 
 ```bash
-curl --location --request POST 'https://api.rockside.io/ethereum/ropsten/0xa8F87be466D1bDff91E6A8E44Be47bF767432638/relay' \
+curl --location --request POST 'https://api.rockside.io/ethereum/ropsten/FORWARDER_ADDRESS/relay' \
 --header 'apikey: YOUR_API_KEU' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "value": "0",
   "nonce": "0",
+  "destination_contract": "0xa8F87be466D1bDff91E6A8E44Be47bF767432638"
   "signer": "YOUR_WALLET_ADDRESS",
   "signature": "YOUR_SIGNATURE"
 }'
@@ -147,7 +148,7 @@ You can follow your transaction on etherscan or you can use Rockside API to keep
 To follow your transaction using its tracking Id use:
 
 ```bash
-curl --location --request GET 'https://api-integration.rockside.io/ethereum/ropsten/transactions/TX_TRACKING_ID' \
+curl --location --request GET 'https://api.rockside.io/ethereum/ropsten/transactions/TX_TRACKING_ID' \
 --header 'apikey: YOUR_APIKEY' \
 ```
 
