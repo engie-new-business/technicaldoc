@@ -18,6 +18,9 @@ We designed a solution with a new approach to get rid of this situation
 * **Transaction batch** Send us more than one transaction in a call. All your transactions are executed onchain within a single transaction.
 * **Tracking ID**: When sending a transaction with Rockside, you get it's transaction hash but also a trancking ID. Use it to follow the status of your transaction even it's replayed with higher gas price.
 
+## Transaction Relay overview
+
+![relay big picture](images/tx-relay-overview.png "image_tooltip")
 
 ## Getting Started
 
@@ -48,7 +51,6 @@ curl --location --request POST 'https://api.rockside.io/ethereum/ropsten/forward
 ```
 
 You get:
-
 ```
 {
     "address": "0xa83E94cA4A9D92009C1Bf6dCA54b3E34D4463138",
@@ -69,7 +71,7 @@ For the example we will call a smart-contract that simply add in an array the ad
 The contract is deployed at this address: [0xa8F87be466D1bDff91E6A8E44Be47bF767432638](https://ropsten.etherscan.io/address/0xa8f87be466d1bdff91e6a8e44be47bf767432638) on ropsten network.
 
 
-We will create a node project to genreate create the relay message.
+We will create a node project to generate create the relay message.
 
 ```bash
 npm init
@@ -98,7 +100,7 @@ const domain = { chainId: 3, verifyingContract: '0xa8F87be466D1bDff91E6A8E44Be47
 
 // Here, all the parameters that can be provided to the dApps to exectute the requested transaction.
 // In our cas only the signer is required. When called the contract only add the signer to an array of caller.
-const metatx = {
+const relayMessage = {
   relayer: "",
   signer: wallet.getAddress(),
   to: "",
@@ -110,7 +112,7 @@ const metatx = {
 };
 
 // Create the HASH of the message
-const hash = Hash.executeMessageHash(domain, metatx);
+const hash = Hash.executeMessageHash(domain, relayMessage);
 
 // Sign the Hash with the wallet.
 wallet.sign(hash).then((value) => {
@@ -139,18 +141,19 @@ Keep those two parameters, you will use it to call Rockside API.
 Call rockside API to relay your transaction:
 
 ```bash
-curl --location --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARDER_ADDRESS/relay' \
+curl --location --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARDER_ADDRESS/forward' \
 --header 'apikey: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-  "destination_contract": "0xa8F87be466D1bDff91E6A8E44Be47bF767432638" ? target_contract
-  "signer": "YOUR_WALLET_ADDRESS",
-  "signature": "YOUR_SIGNATURE",
-  "speed": "average"
-  "gasPriceLimit": ""
-  "value": "0",
-  "nonce": "0",
-
+  "to": "0xa8F87be466D1bDff91E6A8E44Be47bF767432638",
+  "speed": "average",
+  "gasPriceLimit": "",
+  "relay_message": {
+    "signer": "YOUR_WALLET_ADDRESS",
+    "value": "0",
+    "nonce": "0"
+  },
+  "signature": "YOUR_SIGNATURE"
 }'
 ```
 
