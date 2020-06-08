@@ -20,7 +20,7 @@ We designed a solution with a new approach to get rid of this situation
 
 ## Transaction Relay overview
 
-![relay big picture](images/tx-relay-overview.png "image_tooltip")
+![relay pverview](images/tx-relay-overview.png "image_tooltip")
 
 1. User of the Dapp create and sign a relay message with his EOA.
 2. The relay message is sent to Rockside API with Speed and GasPrice Limit parameters.
@@ -142,6 +142,25 @@ Keep those two parameters, you will use it to call Rockside API.
 
 ### Use rockside to Relay your transaction.
 
+To use Rockside API, you need to provide a speed and a gas price limit.
+
+Available speed are:
+  * safelow (around 30 minutes)
+  * average (around 5 minutes)
+  * fast (around 2 minutes)
+  * fastest (around 30 seconds)
+
+Depending on the desired you have to specify a gas Price limit. It define the maximum gas Price you agreed to pay to execute your transaction at the requested speed.
+
+If you want to have an idea of the price to provide you can use [EthGasStation](https://ethgasstation.info).
+
+
+![EthGasStation](images/ethGasStation.png "image_tooltip")
+
+**Remark**: EthGasStation gas price are provided on Gwei. You need to change it on Wei to use it with Rockside (example 39 Gwei -> 39000000000 Wei)
+
+
+
 Call rockside API to relay your transaction:
 
 ```bash
@@ -151,7 +170,7 @@ curl --location --request POST 'https://api.rockside.io/ethereum/ropsten/forward
 --data-raw '{
   "to": "0xa8F87be466D1bDff91E6A8E44Be47bF767432638",
   "speed": "average",
-  "gasPriceLimit": "",
+  "gasPriceLimit": "39000000000",
   "relay_message": {
     "signer": "YOUR_WALLET_ADDRESS",
     "value": "0",
