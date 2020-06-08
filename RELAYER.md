@@ -35,13 +35,15 @@ We designed a solution with a new approach to get rid of this situation
 Go to [dashboard.rockside.io](https://dashboard.rockside.io) and connect using your github account.
 You will get your API KEY that will allow you to access Rockside API.
 
-### Deploy your forwarder contract
+### Deploy your Forwarder contract
 
-To relay your transaction you need to deploy a forwarder contract.To deploy this contract you have to specify an owner account.
+To relay your transaction you need to deploy a Forwarder contract.
 
-By default forwarders only accept transactions coming from rockside signers. Only the owner of the forwarder can modify the list of authorized sender.
+To deploy this contract you must specify an owner account. Only the owner can transfer funds from the Forwarder contract.
 
-Execute this request:
+By default forwarders only accept transactions coming from rockside signers. Only the owner can modify the list of authorized senders.
+
+To deploy a forwarder execute this request:
 
 ```bash
 curl --location --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders' \
