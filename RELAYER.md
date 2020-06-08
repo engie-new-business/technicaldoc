@@ -1,18 +1,18 @@
 # Rockside Relayer
 
-Rockside relayer is a transaction deliverery service. Give us your max gas price and your deadline, we makes sure your transaction is executed on time and at the best price.
+Rockside relayer is a transaction deliverery service. Give us your max gas price and your desired speed, we makes sure your transaction is executed on time and at the best price.
 
 ## The problem we solve
 Sometimes Ethereum transactions are stuck or lost.
 To attempt to solve this problem, developers overpay transactions and must remain on-call to unblock them.
 We designed a solution with a new approach to get rid of this situation
 
-## How we do that
+## How it works
 
 * **API and SDK**: Send your transactions using our API and SDK (JS, iOS)
-* **Deadline and gas price limit**: Depending on your gas price limit, your deadline and current  gas prices market, we decide to accept or not your transaction. Once accepted, we make sure that your transaction is executed on time and at the best price.
-* **Meta transaction**: To relay your transaction we use Meta Transaction and wraps signed message in a new transaction.
-* **Gasless transaction** Thanks to Meta transaction, Rockside allows you to pay gas fees for your DApp's users. They no longer need ETH to interact with your Dapp.
+* **Speed and gas price limit**: Depending on your gas price limit, your desired speed and current  gas prices market, we decide to accept or not your transaction. Once accepted, we make sure that your transaction is executed on time and at the best price. Available speed are: safelow (~30 minutes), average (~ 5 minutes), fast (~ 2 minutes), fastest (~30 seconds)
+* **Meta transaction**: To relay your transactions we use Meta Transaction and wraps signed message in a new transaction.
+* **Gasless transaction:** Thanks to Meta transaction, Rockside allows you to pay gas fees for your DApp's users. They no longer need ETH to interact with your Dapp.
 * **Transaction auto replay**: We monitor your transactions to increase the price of gas when necessary to meet the deadline.
 * **Pool of signers**: We manage a pool of signer with a multi-dimentionnal replay protection to garanty no stuck transaction.
 * **Transaction batch** Send us more than one transaction in a call. All your transactions are executed onchain within a single transaction.
@@ -140,14 +140,17 @@ Call rockside API to relay your transaction:
 
 ```bash
 curl --location --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARDER_ADDRESS/relay' \
---header 'apikey: YOUR_API_KEU' \
+--header 'apikey: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
+  "destination_contract": "0xa8F87be466D1bDff91E6A8E44Be47bF767432638" ? target_contract
+  "signer": "YOUR_WALLET_ADDRESS",
+  "signature": "YOUR_SIGNATURE",
+  "speed": "average"
+  "gasPriceLimit": ""
   "value": "0",
   "nonce": "0",
-  "contract": "0xa8F87be466D1bDff91E6A8E44Be47bF767432638"
-  "signer": "YOUR_WALLET_ADDRESS",
-  "signature": "YOUR_SIGNATURE"
+
 }'
 ```
 
