@@ -10,7 +10,7 @@ We designed a solution with a new approach to get rid of this situation
 ## How it works
 
 * **API and SDK**: Send your transactions using our API and SDK (JS, iOS)
-* **Speed and gas price limit**: Depending on your gas price limit, your desired speed and current  gas prices market, we decide to accept or not your transaction. Once accepted, we make sure that your transaction is executed on time and at the best price. Available speed are: safelow (~30 minutes), average (~ 5 minutes), fast (~ 2 minutes), fastest (~30 seconds)
+* **Speed and gas price limit**: Depending on your gas price limit, your desired speed and current  gas prices market, we decide to accept or not your transaction. Once accepted, we make sure that your transaction is executed on time and at the best price. Available speed are: safelow (around 30 minutes), average (around 5 minutes), fast (around 2 minutes), fastest (around 30 seconds)
 * **Meta transaction**: To relay your transactions we use Meta Transaction and wraps signed message in a new transaction.
 * **Gasless transaction:** Thanks to Meta transaction, Rockside allows you to pay gas fees for your DApp's users. They no longer need ETH to interact with your Dapp.
 * **Transaction auto replay**: We monitor your transactions to increase the price of gas when necessary to meet the deadline.
@@ -22,6 +22,12 @@ We designed a solution with a new approach to get rid of this situation
 
 ![relay big picture](images/tx-relay-overview.png "image_tooltip")
 
+1. User of the Dapp create and sign a relay message with his EOA.
+2. The relay message is sent to Rockside API with Speed and GasPrice Limit parameters.
+3. Rockside API validate that the transaction is possible (speed and gasprice limit, fund available on forwarder...) then send it to the Forwarder.
+4. The forwarder contract validate the signature and the nonce provided. Then it forward the Tx to the Dapp contract and payback for the gas consumed. The gas price used to calculate the fees will never be higher to the specified Gas Price Limit.
+5. The Dapp contract receive the relay message and execute its logic.
+
 ## Getting Started
 
 ### Connect to Rockside
@@ -31,11 +37,7 @@ You will get your API KEY that will allow you to access Rockside API.
 
 ### Deploy your forwarder contract
 
-To relay your transaction you need to deploy a forwarder contract.
-
-This contract receive your transaction sent by Rockside, relay it to your Dapp contract and payback for the gas consumed. The gas price used to calculate the fees will never be higher to the specified Gas Price Limit.
-
-To deploy a forwarder contract you have to specify an owner account.
+To relay your transaction you need to deploy a forwarder contract.To deploy this contract you have to specify an owner account.
 
 By default forwarders only accept transactions coming from rockside signers. Only the owner of the forwarder can modify the list of authorized sender.
 
