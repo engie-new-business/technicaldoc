@@ -19,9 +19,9 @@ We designed a solution with a new approach to get rid of this situation.
 * **Meta transaction**: To relay your transactions we use Meta Transaction and wraps signed message in a new transaction.
 * **Gasless transaction:** Thanks to Meta transaction, Rockside allows you to pay gas fees for your DApp's users. They no longer need ETH to interact with your Dapp.
 * **Transaction auto replay**: We monitor your transactions and we replace it with one with a higher gas price when necessary to validate your transaction according to your requested speed.
-* **Pool of signers**: We manage a pool of signers with a multi-dimentionnal replay protection to garanty no stuck transaction.
+* **Pool of signers**: We manage a pool of signers with a multi-dimentionnal replay protection to guarantee no stuck transaction.
 * **Transaction batch** Send us more than one transaction in a call. All your transactions are executed onchain within a single transaction.
-* **Tracking ID**: When sending a transaction with Rockside, you get it's transaction hash but also a trancking ID. Use it to follow the status of your transaction even it's replayed with higher gas price.
+* **Tracking ID**: When sending a transaction with Rockside, you get it's transaction hash but also a tracking ID. Use it to follow the status of your transaction even it's replayed with higher gas price.
 
 ## Getting Started
 
@@ -160,8 +160,8 @@ curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARD
 --data '{
   "to": "0xa8F87be466D1bDff91E6A8E44Be47bF767432638",
   "speed": "average",
-  "gasPriceLimit": "39000000000",
-  "relay_message": {
+  "data": {
+    "gasPriceLimit": "39000000000",
     "signer": "YOUR_WALLET_ADDRESS",
     "value": "0",
     "nonce": "0"
