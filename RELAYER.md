@@ -41,12 +41,10 @@ By default forwarders only accept transactions coming from rockside signers. Onl
 To deploy a forwarder execute this request:
 
 ```bash
-curl --location --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders' \
+curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders' \
 --header 'apikey: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
-	"owner": "0xf845b2501A69eF480aC577b99e96796c2B6AE88E"
-}'
+--data '{"owner": "0xf845b2501A69eF480aC577b99e96796c2B6AE88E"}'
 ```
 
 You get:
@@ -69,7 +67,6 @@ When your credit is consumed you have to fund it by sending ETH to your Forwarde
 For the example we will call a smart-contract that simply store the address of the account that signed the relay message.
 
 The contract is deployed at this address: [0xa8F87be466D1bDff91E6A8E44Be47bF767432638](https://ropsten.etherscan.io/address/0xa8f87be466d1bdff91e6a8e44be47bf767432638) on ropsten network.
-
 
 We create a node project to generate create the relay message.
 
@@ -150,20 +147,17 @@ Depending on your choice, you have to specify your Gas Price limit. It define th
 
 If you want to have an idea of the price to provide you can use [EthGasStation](https://ethgasstation.info).
 
-
 ![EthGasStation](https://raw.githubusercontent.com/rocksideio/technicaldoc/master/images/ethGasStation.png "EthGasStation")
 
 **Remark**: EthGasStation gas price are provided on Gwei. You need to change it on Wei to use it with Rockside (example 39 Gwei -> 39000000000 Wei)
 
-
-
 Call rockside API to relay your transaction:
 
 ```bash
-curl --location --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARDER_ADDRESS/forward' \
+curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARDER_ADDRESS/forward' \
 --header 'apikey: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
+--data '{
   "to": "0xa8F87be466D1bDff91E6A8E44Be47bF767432638",
   "speed": "average",
   "gasPriceLimit": "39000000000",
@@ -185,16 +179,16 @@ You get:
 }
 ```
 
-You can follow your transaction on etherscan with `transaction_hash`. But when rockside replaces a stuck transaction, its hash changes, so you can use Rockside API and the `tracking_id` to keep track of your transaction even if it's replayed to bump the gas price.
+You can follow your transaction on etherscan with `transaction_hash`. But when rockside replaces a stuck transaction, its hash changes. To keep track of your transactions even if they are replayed with a gas price bump, you can use the `tracking_id` with Rockside API.
 
 To follow your transaction using its `tracking_id` use:
 
 ```bash
-curl --location --request GET 'https://api.rockside.io/ethereum/ropsten/transactions/TX_TRACKING_ID' \
+curl --request GET 'https://api.rockside.io/ethereum/ropsten/transactions/TX_TRACKING_ID' \
 --header 'apikey: YOUR_APIKEY' \
 ```
 
-You Get:
+You get:
 
 ```json
 {
@@ -228,5 +222,3 @@ You Get:
     "mining_time_estimate": 80
 }
 ```
-
-
