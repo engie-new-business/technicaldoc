@@ -13,8 +13,8 @@ We designed a solution with a new approach to get rid of this situation
 * **Speed and gas price limit**: Depending on your gas price limit, your desired speed and current  gas prices market, we decide to accept or not your transaction. Once accepted, we make sure that your transaction is executed on time and at the best price. Available speed are: safelow (around 30 minutes), average (around 5 minutes), fast (around 2 minutes), fastest (around 30 seconds)
 * **Meta transaction**: To relay your transactions we use Meta Transaction and wraps signed message in a new transaction.
 * **Gasless transaction:** Thanks to Meta transaction, Rockside allows you to pay gas fees for your DApp's users. They no longer need ETH to interact with your Dapp.
-* **Transaction auto replay**: We monitor your transactions to increase the price of gas when necessary to meet the deadline.
-* **Pool of signers**: We manage a pool of signer with a multi-dimentionnal replay protection to garanty no stuck transaction.
+* **Transaction auto replay**: We monitor your transactions to increase the price of gas when necessary validate your transaction according to your requested speed.
+* **Pool of signers**: We manage a pool of signers with a multi-dimentionnal replay protection to garanty no stuck transaction.
 * **Transaction batch** Send us more than one transaction in a call. All your transactions are executed onchain within a single transaction.
 * **Tracking ID**: When sending a transaction with Rockside, you get it's transaction hash but also a trancking ID. Use it to follow the status of your transaction even it's replayed with higher gas price.
 
@@ -66,16 +66,17 @@ You get:
 ### Send ETH to your Forwarder contract
 Because the forwarder will payback for the transaction fees it need to have ETH.
 
-On ropsten, we fund your forwarder with 0.05 ETH when it's deployed.
+On ropsten, we fund your forwarder with 0.01 ETH when it's deployed.
 When your credit is consumed you have to fund it by sending ETH to your Forwarder contract address.
 
 ### Create your relay message
 
-For the example we will call a smart-contract that simply add in an array the address of the caller.
+For the example we will call a smart-contract that simply add in an array the address of the account that signed the relay message.
+
 The contract is deployed at this address: [0xa8F87be466D1bDff91E6A8E44Be47bF767432638](https://ropsten.etherscan.io/address/0xa8f87be466d1bdff91e6a8e44be47bf767432638) on ropsten network.
 
 
-We will create a node project to generate create the relay message.
+We create a node project to generate create the relay message.
 
 ```bash
 npm init
@@ -97,13 +98,13 @@ const  Hash = require('@rocksideio/rockside-wallet-sdk/lib/hash.js')
 const wallet = Wallet.BaseWallet.createRandom();
 
 
-// Here follows the different part of the message.
+// Here follows the different parts of the message.
 
 // The domain we are calling with the chainID and the address of the smart-contract we are calling.
 const domain = { chainId: 3, verifyingContract: '0xa8F87be466D1bDff91E6A8E44Be47bF767432638' };
 
 // Here, all the parameters that can be provided to the dApps to exectute the requested transaction.
-// In our cas only the signer is required. When called the contract only add the signer to an array of caller.
+// In our case only the signer is required. When we call the contract, it add the signer to an array of caller.
 const relayMessage = {
   relayer: "",
   signer: wallet.getAddress(),
@@ -144,7 +145,7 @@ Keep those two parameters, you will use it to call Rockside API.
 
 To use Rockside API, you need to provide a speed and a gas price limit.
 
-Available speed are:
+Available speeds are:
   * safelow (around 30 minutes)
   * average (around 5 minutes)
   * fast (around 2 minutes)
