@@ -24,12 +24,12 @@ Your API Key is available on  Rockside Dashboard
 {% endapi-method-headers %}
 
 {% api-method-body-parameters %}
-{% api-method-parameter name="" type="string" required=true %}
-
+{% api-method-parameter name="owner" type="string" required=true %}
+Ethereum address of the owner of the contract. Owner can modify the list of authorized senders and move the funds of the contract.
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="" type="string" required=false %}
-
+{% api-method-parameter name="destinations" type="array" required=false %}
+List of authorized forward destination. If empty all destination are authorized. When forwarder deployed only owner can modify this list.
 {% endapi-method-parameter %}
 {% endapi-method-body-parameters %}
 {% endapi-method-request %}
@@ -37,21 +37,15 @@ Your API Key is available on  Rockside Dashboard
 {% api-method-response %}
 {% api-method-response-example httpCode=200 %}
 {% api-method-response-example-description %}
-Cake successfully retrieved.
+Forwarder deployed
 {% endapi-method-response-example-description %}
 
 ```
-{    "name": "Cake's name",    "recipe": "Cake's recipe name",    "cake": "Binary cake"}
-```
-{% endapi-method-response-example %}
-
-{% api-method-response-example httpCode=404 %}
-{% api-method-response-example-description %}
-Could not find a cake matching this query.
-{% endapi-method-response-example-description %}
-
-```
-{    "message": "Ain't no cake like that."}
+{
+    "address": "0xa83E94cA4A9D92009C1Bf6dCA54b3E34D4463138",
+    "transaction_hash": "0x6663a81a1a827c4bf2301eb169de900c51d2b6e4e2c26d503dce10888f8cdee9",
+    "tracking_id": "01E9ZSDHMYYFMW3E1CVQ9ADVHK"
+}
 ```
 {% endapi-method-response-example %}
 {% endapi-method-response %}
