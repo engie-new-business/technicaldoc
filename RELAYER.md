@@ -1,6 +1,6 @@
 # Rockside Relayer
 
-Rockside relayer is a transaction deliverery service. Give us your max gas price and your desired speed, we makes sure your transaction is executed at the best price for your time.
+Rockside relayer is a transaction deliverery service. Give us your max gas price and your desired speed, we makes sure your transaction is executed at the best price for your speed.
 
 ## The problem we solve
 Sometimes Ethereum transactions are stuck or lost.
@@ -10,7 +10,7 @@ We designed a solution with a new approach to get rid of this situation.
 ## How it works
 
 * **API and SDK**: Send your transactions using our API and open source SDK (JS, iOS)
-* **Speed and gas price limit**: Depending on your gas price limit, your desired speed and current  gas prices market, we whether or not to relay your trandaction. Once accepted, we make sure that your transaction is validated at the best price for your time. Available speed are: safelow (around 30 minutes), average (around 5 minutes), fast (around 2 minutes), fastest (around 30 seconds)
+* **Speed and gas price limit**: Depending on your gas price limit, your desired speed and current  gas prices market, we whether or not to relay your trandaction. Once accepted, we make sure that your transaction is validated at the best price for your speed. Available speed are: safelow (around 30 minutes), average (around 5 minutes), fast (around 2 minutes), fastest (around 30 seconds)
 * **Meta transaction**: To relay your transactions we use Meta Transaction and wraps signed message in a new transaction.
 * **Gasless transaction:** Thanks to Meta transaction, Rockside allows you to pay gas fees for your DApp's users. They no longer need ETH to interact with your Dapp.
 * **Transaction auto replay**: We monitor your transactions and we replace it with one with a higher gas price when necessary to validate your transaction according to your requested speed.
