@@ -11,11 +11,6 @@ We designed a solution with a new approach to get rid of this situation.
 
 ![relay overview](https://raw.githubusercontent.com/rocksideio/technicaldoc/master/images/tx-relay-overview.png "Relay overview")
 
-1. User of the Dapp create and sign a relay message with his EOA. The message is sent to Rockside API with Speed and GasPrice Limit parameters.
-2. Rockside API validate that the transaction is possible (speed and gasprice limit, fund available on your forwarder smart contract...). The signed message warapped in a new transaction and sent to the Forwarder.
-4. The forwarder contract validate the signature of the message and the nonce. Then it forward the transaction to the Dapp contract and payback rockside for the gas consumed. The gas price used to calculate the fees will never be higher to the specified Gas Price Limit.
-5. The Dapp contract receive the relay message and execute its logic.
-
 
 ## How it works
 
