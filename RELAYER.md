@@ -1,19 +1,19 @@
 # Rockside Relayer
 
-Rockside relayer is a transaction deliverery service. Give us your max gas price and your desired speed, we makes sure your transaction is executed on time and at the best price.
+Rockside relayer is a transaction deliverery service. Give us your max gas price and your desired speed, we makes sure your transaction is executed at the best price for your time.
 
 ## The problem we solve
 Sometimes Ethereum transactions are stuck or lost.
 To attempt to solve this problem, developers overpay transactions and must remain on-call to unblock them.
-We designed a solution with a new approach to get rid of this situation
+We designed a solution with a new approach to get rid of this situation.
 
 ## How it works
 
-* **API and SDK**: Send your transactions using our API and SDK (JS, iOS)
-* **Speed and gas price limit**: Depending on your gas price limit, your desired speed and current  gas prices market, we decide to accept or not your transaction. Once accepted, we make sure that your transaction is executed on time and at the best price. Available speed are: safelow (around 30 minutes), average (around 5 minutes), fast (around 2 minutes), fastest (around 30 seconds)
+* **API and SDK**: Send your transactions using our API and open source SDK (JS, iOS)
+* **Speed and gas price limit**: Depending on your gas price limit, your desired speed and current  gas prices market, we whether or not to relay your trandaction. Once accepted, we make sure that your transaction is validated at the best price for your time. Available speed are: safelow (around 30 minutes), average (around 5 minutes), fast (around 2 minutes), fastest (around 30 seconds)
 * **Meta transaction**: To relay your transactions we use Meta Transaction and wraps signed message in a new transaction.
 * **Gasless transaction:** Thanks to Meta transaction, Rockside allows you to pay gas fees for your DApp's users. They no longer need ETH to interact with your Dapp.
-* **Transaction auto replay**: We monitor your transactions to increase the price of gas when necessary to validate your transaction according to your requested speed.
+* **Transaction auto replay**: We monitor your transactions and we replace it with one with a higher gas price when necessary to validate your transaction according to your requested speed.
 * **Pool of signers**: We manage a pool of signers with a multi-dimentionnal replay protection to garanty no stuck transaction.
 * **Transaction batch** Send us more than one transaction in a call. All your transactions are executed onchain within a single transaction.
 * **Tracking ID**: When sending a transaction with Rockside, you get it's transaction hash but also a trancking ID. Use it to follow the status of your transaction even it's replayed with higher gas price.
@@ -24,8 +24,8 @@ We designed a solution with a new approach to get rid of this situation
 
 1. User of the Dapp create and sign a relay message with his EOA.
 2. The relay message is sent to Rockside API with Speed and GasPrice Limit parameters.
-3. Rockside API validate that the transaction is possible (speed and gasprice limit, fund available on forwarder...) then send it to the Forwarder.
-4. The forwarder contract validate the signature and the nonce provided. Then it forward the Tx to the Dapp contract and payback for the gas consumed. The gas price used to calculate the fees will never be higher to the specified Gas Price Limit.
+3. Rockside API validate that the transaction is possible (speed and gasprice limit, fund available on your forwarder smart contract...) then send it to your Forwarder.
+4. The forwarder contract validate the signature and the nonce provided. Then it forward the transaction to the Dapp contract and payback rockside for the gas consumed. The gas price used to calculate the fees will never be higher to the specified Gas Price Limit.
 5. The Dapp contract receive the relay message and execute its logic.
 
 ## Getting Started
@@ -37,7 +37,7 @@ You will get your API KEY that will allow you to access Rockside API.
 
 ### Deploy your Forwarder contract
 
-To relay your transaction you need to deploy a Forwarder contract.
+To relay your transaction, you need to deploy a Forwarder contract.
 
 To deploy this contract you must specify an owner account. Only the owner can transfer funds from the Forwarder contract.
 
@@ -71,7 +71,7 @@ When your credit is consumed you have to fund it by sending ETH to your Forwarde
 
 ### Create your relay message
 
-For the example we will call a smart-contract that simply add in an array the address of the account that signed the relay message.
+For the example we will call a smart-contract that simply store the address of the account that signed the relay message.
 
 The contract is deployed at this address: [0xa8F87be466D1bDff91E6A8E44Be47bF767432638](https://ropsten.etherscan.io/address/0xa8f87be466d1bdff91e6a8e44be47bf767432638) on ropsten network.
 
@@ -151,7 +151,7 @@ Available speeds are:
   * fast (around 2 minutes)
   * fastest (around 30 seconds)
 
-Depending on the desired you have to specify a gas Price limit. It define the maximum gas Price you agreed to pay to execute your transaction at the requested speed.
+Depending on your choice, you have to specify your Gas Price limit. It define the maximum Gas Price you agreed to pay to execute your transaction at the requested speed.
 
 If you want to have an idea of the price to provide you can use [EthGasStation](https://ethgasstation.info).
 
@@ -190,9 +190,9 @@ You get:
 }
 ```
 
-You can follow your transaction on etherscan or you can use Rockside API to keep track of your transaction even if it's replayed to bump the gas price
+You can follow your transaction on etherscan with `transaction_hash`. But when rockside replaces a stuck transaction, its hash changes, so you can use Rockside API and the `tracking_id` to keep track of your transaction even if it's replayed to bump the gas price.
 
-To follow your transaction using its tracking Id use:
+To follow your transaction using its `tracking_id` use:
 
 ```bash
 curl --location --request GET 'https://api.rockside.io/ethereum/ropsten/transactions/TX_TRACKING_ID' \
