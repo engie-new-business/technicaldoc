@@ -5,7 +5,8 @@
 
 ## Advanced
 
-* [Meta transaction](advanced/meta-transaction.md)
-* [Replay protection](advanced/replay-protection.md)
+* [Transaction relay](advanced/transaction-relay.md)
 * [Transaction replay](advanced/replay.md)
+* [Replay protection](advanced/replay-protection.md)
+
 
