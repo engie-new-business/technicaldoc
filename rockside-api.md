@@ -1,5 +1,7 @@
 # Rockside API
 
+
+
 {% api-method method="post" host="https://api.rockside.io" path="/ethereum/:network/forwarder" %}
 {% api-method-summary %}
 Deploy a Forwarder contract
@@ -13,7 +15,7 @@ Deploy a forwarder contract
 {% api-method-request %}
 {% api-method-path-parameters %}
 {% api-method-parameter name="network" type="string" required=true %}
-Available network are: ropsten, mainnet
+Available networks are: ropsten, mainnet
 {% endapi-method-parameter %}
 {% endapi-method-path-parameters %}
 
@@ -37,7 +39,7 @@ List of authorized forward destination. If empty all destination are authorized.
 {% api-method-response %}
 {% api-method-response-example httpCode=200 %}
 {% api-method-response-example-description %}
-Forwarder deployed
+You get the address of your forwarder and the txHash and the trackingID to to follow the status of the transaction.
 {% endapi-method-response-example-description %}
 
 ```
@@ -52,7 +54,7 @@ Forwarder deployed
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="https://api.rockside.io" path="/ethereum/:network/relayParams" %}
+{% api-method method="post" host="https://api.rockside.io" path="/ethereum/:network/relayers/:forwarder\_address/relayParams" %}
 {% api-method-summary %}
 Get Forwarder relay parameters
 {% endapi-method-summary %}
@@ -64,20 +66,43 @@ Get Forwarder relay parameters
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-path-parameters %}
-{% api-method-parameter name="" type="string" required=false %}
+{% api-method-parameter name="network" type="string" required=true %}
+Available networks are: ropsten, mainnet
+{% endapi-method-parameter %}
 
+{% api-method-parameter name="forwarder\_address" type="string" required=true %}
+Address of the forwarder contract
 {% endapi-method-parameter %}
 {% endapi-method-path-parameters %}
+
+{% api-method-headers %}
+{% api-method-parameter name="apikey" type="string" required=true %}
+Your API Key is available on Rockside Dashboard
+{% endapi-method-parameter %}
+{% endapi-method-headers %}
+
+{% api-method-body-parameters %}
+{% api-method-parameter name="account" type="string" required=true %}
+The public address of the EOA that will sign the relay message.
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="channel\_id" type="string" required=false %}
+The channel to use to .get the nonce. 
+{% endapi-method-parameter %}
+{% endapi-method-body-parameters %}
 {% endapi-method-request %}
 
 {% api-method-response %}
 {% api-method-response-example httpCode=200 %}
 {% api-method-response-example-description %}
-
+Returns the nonce to add on your message and the address of the relayer that will be on charge of sending your meta transaction.
 {% endapi-method-response-example-description %}
 
 ```
-
+{
+    "nonce": "0",
+    "relayer": "0xdd0f36E17474E8CbF9C4e483D02a1CF34f41550A"
+}
 ```
 {% endapi-method-response-example %}
 {% endapi-method-response %}
