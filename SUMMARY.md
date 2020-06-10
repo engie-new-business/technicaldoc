@@ -5,7 +5,7 @@
 
 ## Advanced
 
-* [Replay protection](advanced/replay-ptotect-nonce.md)
+* [Replay protection](advanced/replay-protection.md)
 * [Transaction replay](advanced/replay.md)
 
 
