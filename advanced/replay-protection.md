@@ -6,18 +6,19 @@ We think it's the less restrictive approach. It allows ordered but also concurre
 
 In this implementation the nonce is an uint256 that is split in two 128 bit values. The higher bits represent the channel ID while the lower bits represent the nonce in the channel. The nonce to be sent is equal to the current Nonce of a channel. For every use the current Nonce get increased by one.
 
-```js
+```javascript
 mapping(address => mapping(uint128 => uint128)) public nonces;
 
-	function checkAndUpdateNonce(address signer, uint256 nonce) internal returns (bool) {
-		uint128 channelId = uint128(nonce % 2**128);
-		uint128 channelNonce = uint128(nonce / 2**128);
+    function checkAndUpdateNonce(address signer, uint256 nonce) internal returns (bool) {
+        uint128 channelId = uint128(nonce % 2**128);
+        uint128 channelNonce = uint128(nonce / 2**128);
 
-		uint128 currentNonce = nonces[signer][channelId];
-		if (channelNonce == currentNonce) {
-			nonces[signer][channelId]++;
-			return true;
-		}
-		return false;
-	}
+        uint128 currentNonce = nonces[signer][channelId];
+        if (channelNonce == currentNonce) {
+            nonces[signer][channelId]++;
+            return true;
+        }
+        return false;
+    }
 ```
+

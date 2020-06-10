@@ -1,4 +1,4 @@
-# Rockside Relayer
+# 🚀Getting started
 
 Rockside relayer is a transaction delivery service. When sending a transaction to Rockside, you provide:
 
@@ -9,14 +9,13 @@ We make sure your transaction is then executed at the best price in respect to t
 
 ## What problem are we solving?
 
-Sometimes Ethereum transactions are stuck or lost. Often to solve this, developers overpay transactions and must remain on-call to unblock them. 
+Sometimes Ethereum transactions are stuck or lost. Often to solve this, developers overpay transactions and must remain on-call to unblock them.
 
 Our solution is a new approach to deal with this situation.
 
 ## Transaction Relay overview
 
-![relay overview](https://raw.githubusercontent.com/rocksideio/technicaldoc/master/images/tx-relay-overview.png "Relay overview")
-
+![Relay overview](https://raw.githubusercontent.com/rocksideio/technicaldoc/master/images/tx-relay-overview.png)
 
 ## How does it work?
 
@@ -24,8 +23,8 @@ Depending on your given gas price limit, your requested speed and the current ma
 
 Once accepted, we ensure your transaction is validated at the best price at your speed.
 
-* **API and SDK**: Send your transactions using our API and open source SDK (JS, iOS)
-* **Speed**: available speeds are `safelow` (around 30 minutes), `average` or `standard`(around 5 minutes), `fast` (around 2 minutes), `fastest` (around 30 seconds)
+* **API and SDK**: Send your transactions using our API and open source SDK \(JS, iOS\)
+* **Speed**: available speeds are `safelow` \(around 30 minutes\), `average` or `standard`\(around 5 minutes\), `fast` \(around 2 minutes\), `fastest` \(around 30 seconds\)
 * **Gas price limit**: Maximum gas price value in wei, you are willing to apply to your transaction.
 * **Meta-transactions**: To relay your transactions we use the concept of meta-transactions, wrapping your signed message in a new transaction. More  on [meta-transactions page](advanced/meta-transaction.md).
 * **Gasless transaction:** Thanks to meta-transactions, Rockside allows you to pay gas fees for your DApp's users. They no longer need ethers to interact with your DApp.
@@ -38,8 +37,7 @@ Once accepted, we ensure your transaction is validated at the best price at your
 
 ### Connect to Rockside
 
-Go to [dashboard.rockside.io](https://dashboard.rockside.io) and connect using your github account.
-You will get your API key that will allow you to access our API.
+Go to [dashboard.rockside.io](https://dashboard.rockside.io) and connect using your github account. You will get your API key that will allow you to access our API.
 
 ### Deploy your Forwarder
 
@@ -59,7 +57,8 @@ curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders' \
 ```
 
 You get:
-```
+
+```text
 {
     "address": "0xa83E94cA4A9D92009C1Bf6dCA54b3E34D4463138",
     "transaction_hash": "0x6663a81a1a827c4bf2301eb169de900c51d2b6e4e2c26d503dce10888f8cdee9",
@@ -93,7 +92,7 @@ npm install @rocksideio/rockside-wallet-sdk
 
 On index.js add:
 
-```js
+```javascript
 const  Wallet = require('@rocksideio/rockside-wallet-sdk/lib/wallet.js')
 const  Hash = require('@rocksideio/rockside-wallet-sdk/lib/hash.js')
 
@@ -149,18 +148,19 @@ Keep those two parameters, you will use it to call Rockside API.
 To use Rockside API, you need to provide a speed and a gas price limit.
 
 Available speeds are:
-  * safelow (around 30 minutes)
-  * average/standard (around 5 minutes)
-  * fast (around 2 minutes)
-  * fastest (around 30 seconds)
+
+* safelow \(around 30 minutes\)
+* average/standard \(around 5 minutes\)
+* fast \(around 2 minutes\)
+* fastest \(around 30 seconds\)
 
 Depending on your choice, you have to specify your gas price limit. It defines the maximum gas price you agree to pay to execute your transaction at the requested speed.
 
 If you want to have an idea of the price to provide you can use [EthGasStation](https://ethgasstation.info).
 
-![EthGasStation](https://raw.githubusercontent.com/rocksideio/technicaldoc/master/images/ethGasStation.png "EthGasStation")
+![EthGasStation](https://raw.githubusercontent.com/rocksideio/technicaldoc/master/images/ethGasStation.png)
 
-**Note**: EthGasStation gas prices are provided on Gwei on their front page, and as 10xGwei when using their API. Make sure to convert it to wei before sending the value to Rockside (ex: 39 Gwei -> 39000000000 Wei)
+**Note**: EthGasStation gas prices are provided on Gwei on their front page, and as 10xGwei when using their API. Make sure to convert it to wei before sending the value to Rockside \(ex: 39 Gwei -&gt; 39000000000 Wei\)
 
 Let's use curl to relay your transaction:
 
@@ -183,14 +183,14 @@ curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARD
 
 You will get:
 
-```json
+```javascript
 {
     "transaction_hash": "0x2968698cb90ec9d95f8656d28bb29593029c79bcd22b42dc6b9469cb03729e2a",
     "tracking_id": "01EA266P6PKN0ZY01P0Q6G7WR5"
 }
 ```
 
-You can follow your transaction on Etherscan with the `transaction_hash`. But since Rockside is susceptible to replay a stuck transaction, this hash value can changes. 
+You can follow your transaction on Etherscan with the `transaction_hash`. But since Rockside is susceptible to replay a stuck transaction, this hash value can changes.
 
 So to keep track of your transaction - whatever happens to it - use the `tracking_id` as follow:
 
@@ -201,7 +201,7 @@ curl --request GET 'https://api.rockside.io/ethereum/ropsten/transactions/TX_TRA
 
 You will get:
 
-```json
+```javascript
 {
     "transaction_hash": "0x2968698cb90ec9d95f8656d28bb29593029c79bcd22b42dc6b9469cb03729e2a",
     "tracking_id": "01EA266P6PKN0ZY01P0Q6G7WR5",
@@ -229,3 +229,4 @@ You will get:
     "status": "success",
 }
 ```
+

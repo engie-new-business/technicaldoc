@@ -1,4 +1,4 @@
-# Rockside Relay API
+# Relay API
 
 {% api-method method="post" host="https://api.rockside.io" path="/ethereum/:network/forwarder" %}
 {% api-method-summary %}
@@ -107,7 +107,7 @@ Returns the nonce to add on your message and the address of the relayer that wil
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="post" host="https://api.rockside.io" path="/ethereum/:network/forwarders/:forwarder\_address/relay" %}
+{% api-method method="post" host="https://api.rockside.io" path="/ethereum/:network/forwarders/:forwarder\_address/" %}
 {% api-method-summary %}
 Relay a transaction
 {% endapi-method-summary %}
