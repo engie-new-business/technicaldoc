@@ -1,17 +1,15 @@
 # Rockside Relayer
 
-Rockside relayer is a transaction delivery service. 
+Rockside relayer is a transaction delivery service. When sending a transaction to Rockside, you provide:
 
-When sending a transaction to Rockside, you provide:
+* the `gas price limit` which is the maximum price you want to apply to the transaction
+* a chosen `speed` of inclusion in the blockchain
 
-* the `maximum gas price` you are willing to pay
-* a chosen `speed of inclusion` in the blockchain
-
-We then make sure your transaction is executed at the best price in respect to the delay.
+We then make sure your transaction is then executed at the best price in respect to the delay.
 
 ## What problem are we solving?
 
-Sometimes Ethereum transactions are stuck or lost. Often to solve this, developers overpay transactions and must remain on-call to unblock them. Our solution is a new approach to deal with that situation.
+Sometimes Ethereum transactions are stuck or lost. Often to solve this, developers overpay transactions and must remain on-call to unblock them. Our solution is a new approach to deal with this situation.
 
 ## Transaction Relay overview
 
@@ -20,7 +18,7 @@ Sometimes Ethereum transactions are stuck or lost. Often to solve this, develope
 
 ## How does it work?
 
-Depending on your given gas price limit, your desired speed and the current gas prices on the market, we decide whether or not to relay your transaction.
+Depending on your given gas price limit, your requested speed and the current market gas prices, we decide whether or not to relay your transaction.
 
 Once accepted, we ensure your transaction is validated at the best price at your speed.
 
