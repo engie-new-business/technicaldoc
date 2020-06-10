@@ -1,5 +1,3 @@
-# Replay
-
 A pending transaction is a transaction that is waiting in the transactions pool of the Ethereum nodes to be mined.
 
 A pending transaction can be replayed by transmitting the same transaction, signed with the same account, but with a higher gas price.
