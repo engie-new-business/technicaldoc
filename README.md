@@ -18,8 +18,8 @@ We designed a solution with a new approach to get rid of this situation.
 * **Speed and gas price limit**: Depending on your gas price limit, your desired speed and current  gas prices market, we decide whether or not to relay your trandaction. Once accepted, we make sure that your transaction is validated at the best price for your speed. Available speed are: safelow (around 30 minutes), average (around 5 minutes), fast (around 2 minutes), fastest (around 30 seconds)
 * **Meta transaction**: To relay your transactions we use Meta Transaction and wraps signed message in a new transaction.
 * **Gasless transaction:** Thanks to Meta transaction, Rockside allows you to pay gas fees for your DApp's users. They no longer need ETH to interact with your Dapp.
-* **Transaction auto replay**: We monitor your transactions and we replace it with one with a higher gas price when necessary to validate your transaction according to your requested speed.
-* **Pool of signers**: We manage a pool of signers with a multi-dimentionnal replay protection to guarantee no stuck transaction.
+* **Transaction auto replay**: We monitor your transactions and we replace it with one with a higher gas price when necessary to validate your transaction according to your requested speed. More on [transaction replay page](advanced/replay.md).
+* **Pool of signers**: We manage a pool of signers with a [multi-dimentionnal replay protection](advanced/replay-protection.md) to guarantee no stuck transaction.
 * **Transaction batch** Send us more than one transaction in a call. All your transactions are executed onchain within a single transaction.
 * **Tracking ID**: When sending a transaction with Rockside, you get it's transaction hash but also a tracking ID. Use it to follow the status of your transaction even it's replayed with higher gas price.
 
