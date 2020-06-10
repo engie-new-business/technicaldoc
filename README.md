@@ -1,6 +1,6 @@
 # 🚀Getting started
 
-Rockside relayer is a transaction delivery service. When sending a transaction to Rockside, you provide:
+Rockside relayer is a non-custodial transaction delivery service. When sending a transaction to Rockside, you provide:
 
 * the `gas price limit` which is the maximum price you want to apply to the transaction
 * a chosen `speed` of inclusion in the blockchain
