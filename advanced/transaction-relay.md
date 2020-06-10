@@ -3,9 +3,6 @@ To relay your transactions we use the concept of meta-transactions. Meta transac
 ![relay overview](https://raw.githubusercontent.com/rocksideio/technicaldoc/master/images/tx-relay-overview.png "Relay overview")
 
 
-## Forwarder contract
-// TO DO EXPLAIN What is the role of the Forwarder Contract
-
 ## User sign its message and send it to Rockside Relay API
 
 The paramaters that have to be included on the signed message are:
@@ -22,7 +19,7 @@ At Rockside we follow [EIP-712](https://github.com/ethereum/EIPs/blob/master/EIP
 
 When the message is created and signed, it's sent to Rockside Relayer API with a chosen speed of inclusion in the blockchain.
 
-### The Relayer validate the transaction and send it to the Forwarder
+### Rockside Relay API validate the transaction and send it to the Forwarder
 
 1. **Accept the transaction**: Rockside use EthGasStation as a reference for the gas prices. Depending on your given gas price limit, your requested speed and the current market gas prices, we decide whether or not to relay your transaction. We also verify that the Forwarder have enough ETH to refund Rockside for the gas used by the transaction.
 
@@ -31,12 +28,16 @@ When the message is created and signed, it's sent to Rockside Relayer API with a
 3. **The message is included on a transaction**: Using the chosen EAO a transaction containing the signed message of the user is sent to the Forwarder. The gas price used by Rockside is in accordance with the speed requested.
 
 
-### The Forwarder validate the transaction and call the destination contract
+### The Forwarder validate the message and call the destination contract
 
-1. **Message signature validation**:
-2. **Check and update nonce**:
-3. **Call the destination contract**:
+1. **Message signature validation**: The forwarder verify that the signature correspond to the signer and the parameters of the transaction.
+2. **Check and update nonce**: To avoid replay attack, the forwarder verify that the nonce was not already used. Once verified, the current nonce of is incremented.
+3. **Call the destination contract**: When all verifications succeed, the destination contract is called with the parameters of the transactions.
+4. **Refund Rockside relayer**: An amount of ETH corresponding to the gas consumed and the gas price used (limited by the gas price limit) is sent from the Forwarder to the Rockside Relayer.
 
 ### The transaction is executed
 
-The destination contract has received the different parameters of the transaction (signer, to, value, data). It can now execute the transaction on behalf of the signer.
+The destination contract implement a method  `relayExecute(signer, to, value, data, gasLimit, gasPrice, nonce)` that can only be call by the forwarder address (the forwarder is in charge to validate the signature and the nonce).
+
+With the received parameters, transaction is executed on behalf of the signer.
+
