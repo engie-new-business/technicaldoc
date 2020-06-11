@@ -170,3 +170,67 @@ Signature of the parameters present in the data fields.
 {% endapi-method-spec %}
 {% endapi-method %}
 
+{% api-method method="get" host="https://api.rockside.io" path="/ethereum/:network/transactions/:tracking\_id" %}
+{% api-method-summary %}
+Get transaction infos
+{% endapi-method-summary %}
+
+{% api-method-description %}
+Retrieve informations about a transaction relayed.
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+{% api-method-path-parameters %}
+{% api-method-parameter name="network" type="string" required=true %}
+Available network are: mainnet, ropsten
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="tracking\_id" type="string" required=true %}
+Tracking ID of your transaction. Returned by the relay service when sending your transaction.
+{% endapi-method-parameter %}
+{% endapi-method-path-parameters %}
+
+{% api-method-headers %}
+{% api-method-parameter name="apikey" type="string" required=true %}
+Your API Key is available on Rockside Dashboard
+{% endapi-method-parameter %}
+{% endapi-method-headers %}
+{% endapi-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+Returns infos for a transaction. 
+{% endapi-method-response-example-description %}
+
+```
+{
+    "transaction_hash": "0x2968698cb90ec9d95f8656d28bb29593029c79bcd22b42dc6b9469cb03729e2a",
+    "tracking_id": "01EA266P6PKN0ZY01P0Q6G7WR5",
+    "from": "0xdd0f36e17474e8cbf9c4e483d02a1cf34f41550a",
+    "to": "0x7bb7703f2c601a54b484add52a07afad9c9f495e",
+    "data_length": 484,
+    "value": 0,
+    "gas": 87601,
+    "gas_price": 19270,
+    "chain_id": 3,
+    "receipt": {
+        "status": 1,
+        "cumulative_gas_used": 6332041,
+        "logs": [],
+        "transaction_hash": "0x2968698cb90ec9d95f8656d28bb29593029c79bcd22b42dc6b9469cb03729e2a",
+        "contract_address": "0x0000000000000000000000000000000000000000",
+        "gas_used": 86687,
+        "block_hash": "0xd21a10cc344cb84faaab6725de8dedf51ae8deaacba62c6e0a570dc2578481f2",
+        "block_number": 8035552,
+        "transaction_index": 8
+    },
+    "status": "success",
+}
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
+

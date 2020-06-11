@@ -26,7 +26,7 @@ Once accepted, we ensure your transaction is validated at the best price at your
 * **API and SDK**: Send your transactions using our API and open source SDK \(JS, iOS\)
 * **Speed**: available speeds are `safelow` \(around 30 minutes\), `average` or `standard`\(around 5 minutes\), `fast` \(around 2 minutes\), `fastest` \(around 30 seconds\)
 * **Gas price limit**: Maximum gas price value in wei, you are willing to apply to your transaction.
-* **Meta-transactions**: To relay your transactions we use the concept of meta-transactions, wrapping your signed message in a new transaction. More  on [meta-transactions page](advanced/meta-transaction.md).
+* **Meta-transactions**: To relay your transactions we use the concept of meta-transactions, wrapping your signed message in a new transaction. More  on [meta-transactions page](https://github.com/rocksideio/technicaldoc/tree/1976743e9a75dae477fe57fe11e634ee36992cc2/advanced/meta-transaction.md).
 * **Gasless transaction:** Thanks to meta-transactions, Rockside allows you to pay gas fees for your DApp's users. They no longer need ethers to interact with your DApp.
 * **Transaction auto replay**: We monitor your transaction and we replace it with one with a higher gas price when necessary to validate your transaction according to your requested speed. More on [transaction replay page](advanced/replay.md).
 * **Pool of signers**: We manage a pool of signers with a [multi-dimensionnal replay protection](advanced/replay-protection.md) to guarantee no stuck transactions.
