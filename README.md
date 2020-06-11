@@ -17,7 +17,7 @@ Our solution is a new approach to deal with this situation.
 
 ![Relay overview](https://raw.githubusercontent.com/rocksideio/technicaldoc/master/images/tx-relay-overview.png)
 
-For more details go on [transaction relay page](advanced/transaction-relay).
+For more details go on [transaction relay page](advanced/transaction-relay.md).
 
 ## How does it work?
 
