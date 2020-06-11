@@ -31,6 +31,6 @@ The price recommended obviously varies according to the current congestion of th
 
 When you first send a transaction to Rockside, you specify a `speed` \(which translates to a deadline of inclusion in the blockchain\) and a `gas price limit` which is the maximum gas price you allow to apply to the transaction.
 
-Rockside monitors your transaction. We then upgrade the gas price to be able to reach your deadline, Rockside paying for the extra costs.
+Rockside monitors your transaction. We then upgrade the gas price to be able to reach your deadline.
 
-Of course, Rockside paying for the extra costs \(for your transaction to be included in time\), we reserved the right to refuse a transaction when you first send it to us. Usually because the gas price limit your requested does not reflect the current state of the network. Our API would obviously explains why a your transaction was refused at the beginning of the process.
+Rockside paying for the extra costs \(for your transaction to be included in time\), we reserved the right to refuse a transaction when you first send it to us. Usually because the gas price limit your requested does not reflect the current state of the network. Our API would obviously explains why a your transaction was refused at the beginning of the process.
