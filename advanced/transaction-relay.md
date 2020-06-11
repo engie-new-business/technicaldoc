@@ -34,7 +34,8 @@ When the message is created and signed, it's sent to Rockside Relayer API with a
 
 ### The transaction is executed
 
-The destination contract have to implement a method  `relayExecute(signer, to, value, data, gasLimit, gasPrice, nonce)`.
-This method have to be only accessible but the forwarder contract (the forwarder is in charge to validate the signature and the nonce).
+The destination contract have to implement a method :
+`relayExecute(signer, to, value, data, gasLimit, gasPrice, nonce)`
+This method have to be only accessible by the forwarder contract (the forwarder is in charge to validate the signature and the nonce).
 With the received parameters, transaction is executed on behalf of the signer.
 
