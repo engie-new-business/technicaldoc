@@ -1,6 +1,5 @@
 # Transaction relay
-
-To relay your transactions we use the concept of meta-transactions. Meta transaction are based on the principle of off-chain message signing for on-chain use. A user will sign a message representing its transaction intent. Then the message is sent to a relayer that will have the responsability to relay the message that will be executed on chain by a smart contract.
+To relay your transactions we use the concept of meta-transactions. Meta transaction are based on the principle of off-chain message signing for on-chain use. A user sign a message representing its transaction intent. The message is sent to the Rockside Relay API that include the message a transaction and send it to be executed on chain by a smart-contract.
 
 ![Relay overview](https://raw.githubusercontent.com/rocksideio/technicaldoc/master/images/tx-relay-overview.png)
 
@@ -29,13 +28,13 @@ When the message is created and signed, it's sent to Rockside Relayer API with a
 ### The Forwarder validate the message and call the destination contract
 
 1. **Message signature validation**: The forwarder verify that the signature correspond to the signer and the parameters of the transaction.
-2. **Check and update nonce**: To avoid replay attack, the forwarder verify that the nonce was not already used. Once verified, the current nonce of is incremented.
+2. **Check and update nonce**: To avoid replay attack, the forwarder verify that the nonce was not already used. Once verified, the current nonce is incremented.
 3. **Call the destination contract**: When all verifications succeed, the destination contract is called with the parameters of the transactions.
 4. **Refund Rockside relayer**: An amount of ETH corresponding to the gas consumed and the gas price used \(limited by the gas price limit\) is sent from the Forwarder to the Rockside Relayer.
 
 ### The transaction is executed
 
-The destination contract implement a method `relayExecute(signer, to, value, data, gasLimit, gasPrice, nonce)` that can only be call by the forwarder address \(the forwarder is in charge to validate the signature and the nonce\).
-
+The destination contract have to implement a method  `relayExecute(signer, to, value, data, gasLimit, gasPrice, nonce)`.
+This method have to be only accessible but the forwarder contract (the forwarder is in charge to validate the signature and the nonce).
 With the received parameters, transaction is executed on behalf of the signer.
 

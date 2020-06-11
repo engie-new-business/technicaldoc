@@ -17,6 +17,8 @@ Our solution is a new approach to deal with this situation.
 
 ![Relay overview](https://raw.githubusercontent.com/rocksideio/technicaldoc/master/images/tx-relay-overview.png)
 
+For more details go on [transaction relay page](advanced/transaction-relay).
+
 ## How does it work?
 
 Depending on your given gas price limit, your requested speed and the current market gas prices, we decide whether or not to relay your transaction.
