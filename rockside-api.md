@@ -186,8 +186,8 @@ Retrieve informations about a transaction relayed.
 Available network are: mainnet, ropsten
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="tracking\_id" type="string" required=true %}
-Tracking ID of your transaction. Returned by the relay service when sending your transaction.
+{% api-method-parameter name="tracking\_id|transaction_hash" type="string" required=true %}
+Tracking ID or transaction hash of your transaction. Returned by the relay service when sending your transaction. (Use the tracking ID to have the latest and automatically updated status of your transaction even in case of replays and other actions taken.)
 {% endapi-method-parameter %}
 {% endapi-method-path-parameters %}
 
@@ -233,4 +233,3 @@ Returns infos for a transaction.
 {% endapi-method-response %}
 {% endapi-method-spec %}
 {% endapi-method %}
-
