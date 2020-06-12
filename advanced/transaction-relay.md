@@ -23,9 +23,7 @@ When the message is created and signed, it's sent to Rockside with a chosen spee
 ### Rockside validates the transaction and sends it to the Forwarder
 
 1. **Accept the transaction**: Rockside use EthGasStation as a reference for the gas prices. Depending on your given gas price limit, your requested speed and the current market gas prices, we decide whether or not to relay your transaction. We also verify that the Forwarder has enough ether to refund Rockside for the gas used by the transaction.
-   
 2. **Choose the appropriate EOA**: Rockside manages different pools of EOA to send transactions. A pool of EOA for each available speed. This way, we guarantee that a "fast" transaction will not be slowed down by a transaction with a "safelow" speed. It's like on the highway, each transaction has its own queue depending on its speed.
-   
 3. **The message is included within a transaction**: Using the corresponding EOA a transaction containing the signed message of the user is sent to the user's Forwarder. The gas price used by Rockside is in accordance with the speed requested.
 
 ### The Forwarder validates the message and calls the destination contract
@@ -39,8 +37,9 @@ When the message is created and signed, it's sent to Rockside with a chosen spee
 
 The destination contract has to implement the following method:
 
-```
+```text
 relayExecute(signer, to, value, data, gasLimit, gasPrice, nonce)
 ```
 
-This method has to be only accessible by the forwarder contract (the forwarder is in charge of validating the signature and the nonce). With the received parameters, the transaction is executed on behalf of the signer.
+This method has to be only accessible by the forwarder contract \(the forwarder is in charge of validating the signature and the nonce\). With the received parameters, the transaction is executed on behalf of the signer.
+

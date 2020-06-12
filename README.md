@@ -1,4 +1,4 @@
-# 🚀Getting started
+# 🚀 Getting started
 
 Rockside relayer is a non-custodial transaction delivery service. When sending a transaction to Rockside, you provide:
 

@@ -1,6 +1,6 @@
 # Relay API
 
-{% api-method method="post" host="https://api.rockside.io" path="/ethereum/:network/forwarder" %}
+{% api-method method="post" host="https://api.rockside.io" path="/ethereum/:network/forwarders" %}
 {% api-method-summary %}
 Deploy a Forwarder contract
 {% endapi-method-summary %}
@@ -19,7 +19,7 @@ Available networks are: ropsten, mainnet
 
 {% api-method-headers %}
 {% api-method-parameter name="apikey" type="string" required=true %}
-Your API Key is available on  Rockside Dashboard
+Your API Key is available on Rockside Dashboard
 {% endapi-method-parameter %}
 {% endapi-method-headers %}
 
@@ -40,12 +40,53 @@ List of authorized forward destination. If empty all destination are authorized.
 You get the address of your forwarder and the txHash and the trackingID to to follow the status of the transaction.
 {% endapi-method-response-example-description %}
 
-```
+```text
 {
     "address": "0xa83E94cA4A9D92009C1Bf6dCA54b3E34D4463138",
     "transaction_hash": "0x6663a81a1a827c4bf2301eb169de900c51d2b6e4e2c26d503dce10888f8cdee9",
     "tracking_id": "01E9ZSDHMYYFMW3E1CVQ9ADVHK"
 }
+```
+{% endapi-method-response-example %}
+{% endapi-method-response %}
+{% endapi-method-spec %}
+{% endapi-method %}
+
+{% api-method method="get" host="https://api.rockside.io" path="/ethereum/:network/forwarders" %}
+{% api-method-summary %}
+List Forwarders
+{% endapi-method-summary %}
+
+{% api-method-description %}
+Get the list of all your forwarders
+{% endapi-method-description %}
+
+{% api-method-spec %}
+{% api-method-request %}
+{% api-method-path-parameters %}
+{% api-method-parameter name="network" type="string" required=true %}
+Available networks are: mainnet, ropsten
+{% endapi-method-parameter %}
+{% endapi-method-path-parameters %}
+
+{% api-method-headers %}
+{% api-method-parameter name="apikey" type="string" required=true %}
+Your API Key is available on Rockside Dashboard
+{% endapi-method-parameter %}
+{% endapi-method-headers %}
+{% endapi-method-request %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=200 %}
+{% api-method-response-example-description %}
+List of your forwarders
+{% endapi-method-response-example-description %}
+
+```
+[
+    "0x7Bb7703f2c601A54b484ADd52a07AFAD9C9F495e",
+    "0x57732F6610623D944c2150C8E394e44f37b18357"
+]
 ```
 {% endapi-method-response-example %}
 {% endapi-method-response %}
@@ -85,7 +126,7 @@ The public address of the EOA that will sign the relay message.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="channel\_id" type="string" required=false %}
-The channel to use to .get the nonce. 
+The channel to use to .get the nonce.
 {% endapi-method-parameter %}
 {% endapi-method-body-parameters %}
 {% endapi-method-request %}
@@ -96,7 +137,7 @@ The channel to use to .get the nonce.
 Returns the nonce to add on your message and the address of the relayer that will be on charge of sending your meta transaction.
 {% endapi-method-response-example-description %}
 
-```
+```text
 {
     "nonce": "0",
     "relayer": "0xdd0f36E17474E8CbF9C4e483D02a1CF34f41550A"
@@ -159,7 +200,7 @@ Signature of the parameters present in the data fields.
 
 {% endapi-method-response-example-description %}
 
-```
+```text
 {
     "transaction_hash": "0x6663a81a1a827c4bf2301eb169de900c51d2b6e4e2c26d503dce10888f8cdee9",
     "tracking_id": "01E9ZSDHMYYFMW3E1CVQ9ADVHK"
@@ -186,8 +227,8 @@ Retrieve informations about a transaction relayed.
 Available network are: mainnet, ropsten
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="tracking\_id|transaction_hash" type="string" required=true %}
-Tracking ID or transaction hash of your transaction. Returned by the relay service when sending your transaction. (Use the tracking ID to have the latest and automatically updated status of your transaction even in case of replays and other actions taken.)
+{% api-method-parameter name="tracking\_id\|transaction\_hash" type="string" required=true %}
+Tracking ID or transaction hash of your transaction. Returned by the relay service when sending your transaction. \(Use the tracking ID to have the latest and automatically updated status of your transaction even in case of replays and other actions taken.\)
 {% endapi-method-parameter %}
 {% endapi-method-path-parameters %}
 
@@ -201,10 +242,10 @@ Your API Key is available on Rockside Dashboard
 {% api-method-response %}
 {% api-method-response-example httpCode=200 %}
 {% api-method-response-example-description %}
-Returns infos for a transaction. 
+Returns infos for a transaction.
 {% endapi-method-response-example-description %}
 
-```
+```text
 {
     "transaction_hash": "0x2968698cb90ec9d95f8656d28bb29593029c79bcd22b42dc6b9469cb03729e2a",
     "tracking_id": "01EA266P6PKN0ZY01P0Q6G7WR5",
@@ -233,3 +274,4 @@ Returns infos for a transaction.
 {% endapi-method-response %}
 {% endapi-method-spec %}
 {% endapi-method %}
+
