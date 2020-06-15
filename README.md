@@ -126,7 +126,7 @@ node index.js
 You get:
 
 ```bash
-Wallet address (signer): 0xeaD23030fe26C5965FDf6D5C72C575689E2F51D2
+Signer: 0xeaD23030fe26C5965FDf6D5C72C575689E2F51D2
 Signature: 0xf68b22a18b28ec88751a270ba1575634134f09847ed36587fbc51d5d2de1aef927d8cec7d7d0f870c7fc5ecfd59e9407f5b2c0ce0824dc988de427aaede89f681c
 ```
 
@@ -158,20 +158,20 @@ curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARD
 --header 'apikey: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-	"destination_contract": "0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e",
-	"speed": "average",
-	"data": {
- 		"signer": "ADDRESS_OF_THE_SIGNER",
-		"value": "0",
-		"nonce": "0",
-		"to": "0x0000000000000000000000000000000000000000",
-		"gas_price_limit": "39000000000"
-	},
-	"signature": "SIGNATURE_OF_THE_MESSAGE"
+    "destination_contract": "0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e",
+    "speed": "average",
+    "data": {
+         "signer": "ADDRESS_OF_THE_SIGNER",
+        "value": "0",
+        "nonce": "0",
+        "to": "0x0000000000000000000000000000000000000000",
+        "gas_price_limit": "39000000000"
+    },
+    "signature": "SIGNATURE_OF_THE_MESSAGE"
 }'
 ```
 
-*Attention, the value of the data parameters (gas_price_limit, to, ...) must be the same used for signature generation.*
+_Attention, the value of the data parameters \(gas\_price\_limit, to, ...\) must be the same used for signature generation._
 
 You will get:
 
