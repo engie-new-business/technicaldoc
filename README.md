@@ -78,7 +78,7 @@ On Ropsten, we fund your forwarder with 0.01 ETH when it's deployed. When your c
 
 As an example, let's call a smart contract that simply stores the address of the account that signed the relay message.
 
-The contract is deployed at: [0xa8F87be466D1bDff91E6A8E44Be47bF767432638](https://ropsten.etherscan.io/address/0xa8f87be466d1bdff91e6a8e44be47bf767432638) on the Ropsten network.
+The contract is deployed at: [0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e](https://ropsten.etherscan.io/address/0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e) on the Ropsten network.
 
 We create a node project to be able to build the relay message.
 
@@ -105,7 +105,7 @@ const wallet = Wallet.BaseWallet.createRandom();
 // Following are the different parts of the message.
 
 // The domain we are calling with the chainID and the address of the contract we are calling.
-const domain = { chainId: 3, verifyingContract: '0xa8F87be466D1bDff91E6A8E44Be47bF767432638' };
+const domain = { chainId: 3, verifyingContract: '0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e' };
 
 // Here, all the parameters that can be provided to the dApps to execute the requested transaction.
 // In our case only the signer is required. When we call the contract, it adds the signer to an array of caller.
