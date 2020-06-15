@@ -43,7 +43,7 @@ Go to [dashboard.rockside.io](https://dashboard.rockside.io) and connect using y
 
 ### Deploy your Forwarder
 
-To relay your transaction, you need to deploy a Forwarder contract.
+To relay your transaction, you need to deploy a Forwarder contract. Rockside covers transaction fees (gas) for this operation.
 
 You must specify an owner account. Only the owner can transfer funds from the Forwarder contract.
 
