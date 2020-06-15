@@ -98,8 +98,8 @@ On index.js add:
 const  Wallet = require(‘@rocksideio/rockside-wallet-sdk/lib/wallet.js’)
 const  Hash = require(‘@rocksideio/rockside-wallet-sdk/lib/hash.js’)
 const wallet = Wallet.BaseWallet.createRandom();
-//const domain = { chainId: 3, verifyingContract: ‘0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e’ };
-const domain = { chainId: 1, verifyingContract: ‘0xC413365F33d99971731437a2407aD7E04d3846A9’};
+const domain = { chainId: 3, verifyingContract: ‘0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e’ };
+
 const metatx = {
   relayer: “”,
   signer: wallet.getAddress(),
