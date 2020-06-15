@@ -154,7 +154,7 @@ If you want to have an idea of the price to provide you can use [EthGasStation](
 Let's use curl to relay your transaction:
 
 ```bash
-curl --request POST 'https://api.rockside.io/ethereum/mainnet/forwarders/FORWARDER_ADDRESS' \
+curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARDER_ADDRESS' \
 --header 'apikey: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
 --data-raw '{
