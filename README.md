@@ -133,7 +133,7 @@ wallet.sign(hash).then((value) => {
 Run the script
 
 ```bash
-npm index.js
+node index.js
 ```
 
 You get:
