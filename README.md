@@ -43,7 +43,7 @@ Go to [dashboard.rockside.io](https://dashboard.rockside.io) and connect using y
 
 ### Deploy your Forwarder
 
-To relay your transaction, you need to deploy a Forwarder contract. Rockside covers transaction fees (gas) for this operation.
+To relay your transaction, you need to deploy a Forwarder contract. Rockside covers transaction fees \(gas\) for this operation.
 
 You must specify an owner account. Only the owner can transfer funds from the Forwarder contract.
 
@@ -108,7 +108,7 @@ const metatx = {
   data: [],
   nonce: 0,
   gasLimit: 0,
-  gasPrice: 19000000000
+  gasPrice: 39000000000
 };
 const hash = Hash.executeMessageHash(domain, metatx);
 wallet.sign(hash).then((value) => {
@@ -154,19 +154,20 @@ If you want to have an idea of the price to provide you can use [EthGasStation](
 Let's use curl to relay your transaction:
 
 ```bash
-curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARDER_ADDRESS/forward' \
+curl --request POST 'https://api.rockside.io/ethereum/mainnet/forwarders/FORWARDER_ADDRESS' \
 --header 'apikey: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
---data '{
-  "to": "0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e",
-  "speed": "average",
-  "data": {
-    "gas_price_limit": "39000000000",
-    "signer": "YOUR_WALLET_ADDRESS",
-    "value": "0",
-    "nonce": "0"
-  },
-  "signature": "YOUR_SIGNATURE"
+--data-raw '{
+	"destination_contract": "0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e",
+	"speed": "average",
+	"data": {
+ 		"signer": "ADDRESS_OF_THE_SIGNER",
+		"value": "0",
+		"nonce": "0",
+		"to": "0x0000000000000000000000000000000000000000",
+		"gas_price_limit": "39000000000"
+	},
+	"signature": "SIGNATURE_OF_THE_MESSAGE"
 }'
 ```
 
