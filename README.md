@@ -157,11 +157,11 @@ Let's use curl to relay your transaction:
 curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARDER_ADDRESS' \
 --header 'apikey: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
---data-raw '{
+--data '{
     "destination_contract": "0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e",
     "speed": "average",
     "data": {
-         "signer": "ADDRESS_OF_THE_SIGNER",
+        "signer": "ADDRESS_OF_THE_SIGNER",
         "value": "0",
         "nonce": "0",
         "gas_price_limit": "19000000000"
