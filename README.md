@@ -32,7 +32,7 @@ Once accepted, we ensure your transaction is validated at the best price at your
 * **Gasless transaction:** Thanks to meta-transactions, Rockside allows you to pay gas fees for your DApp's users. They no longer need ethers to interact with your DApp.
 * **Transaction auto replay**: We monitor your transaction and we replace it with one with a higher gas price when necessary to validate your transaction according to your requested speed. More on [transaction replay page](advanced/replay.md).
 * **Pool of signers**: We manage a pool of signers with a [multi-dimensionnal replay protection](advanced/replay-protection.md) to guarantee no stuck transactions.
-* **Transaction batch** You can group your transactions in a batch. You then have a atomic operation and your transactions will be executed on chain within a single transaction.
+* **Transaction batch** You can group your transactions in a batch. You then have an atomic operation and your transactions will be executed on chain within a single transaction.
 * **Tracking ID**: When sending a transaction to Rockside, we also provide you with its tracking ID. Use it to have the latest and automatically updated status of your transaction even in case of replays and other actions taken.
 
 ## Getting Started
