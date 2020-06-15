@@ -171,6 +171,8 @@ curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARD
 }'
 ```
 
+*Attention, the value of the data parameters (gas_price_limit, to, ...) must be the same used for signature generation.*
+
 You will get:
 
 ```javascript
