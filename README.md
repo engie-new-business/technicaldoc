@@ -95,38 +95,25 @@ npm install @rocksideio/rockside-wallet-sdk
 On index.js add:
 
 ```javascript
-const  Wallet = require('@rocksideio/rockside-wallet-sdk/lib/wallet.js')
-const  Hash = require('@rocksideio/rockside-wallet-sdk/lib/hash.js')
-
-// A new wallet is created. It will be used to sign the message
+const  Wallet = require(‘@rocksideio/rockside-wallet-sdk/lib/wallet.js’)
+const  Hash = require(‘@rocksideio/rockside-wallet-sdk/lib/hash.js’)
 const wallet = Wallet.BaseWallet.createRandom();
-
-
-// Following are the different parts of the message.
-
-// The domain we are calling with the chainID and the address of the contract we are calling.
-const domain = { chainId: 3, verifyingContract: '0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e' };
-
-// Here, all the parameters that can be provided to the dApps to execute the requested transaction.
-// In our case only the signer is required. When we call the contract, it adds the signer to an array of caller.
-const relayMessage = {
-  relayer: "",
+//const domain = { chainId: 3, verifyingContract: ‘0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e’ };
+const domain = { chainId: 1, verifyingContract: ‘0xC413365F33d99971731437a2407aD7E04d3846A9’};
+const metatx = {
+  relayer: “”,
   signer: wallet.getAddress(),
-  to: "",
+  to: “”,
   value: 0,
   data: [],
   nonce: 0,
   gasLimit: 0,
-  gasPrice: 0
+  gasPrice: 19000000000
 };
-
-// Create the HASH of the message
-const hash = Hash.executeMessageHash(domain, relayMessage);
-
-// Sign the Hash with the wallet.
+const hash = Hash.executeMessageHash(domain, metatx);
 wallet.sign(hash).then((value) => {
-  console.log("Wallet address (signer): "+wallet.getAddress())
-  console.log("Signature: "+value)
+  console.log(“Signer: “+wallet.getAddress())
+  console.log(“Signature: “+value)
 });
 ```
 
