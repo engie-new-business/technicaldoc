@@ -188,7 +188,7 @@ So to keep track of your transaction - whatever happens to it - use the `trackin
 
 ```bash
 curl --request GET 'https://api.rockside.io/ethereum/ropsten/transactions/TX_TRACKING_ID' \
---header 'apikey: YOUR_API_KEY' \
+--header 'apikey: YOUR_API_KEY'
 ```
 
 You will get:
