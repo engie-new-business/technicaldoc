@@ -108,7 +108,7 @@ const metatx = {
   data: [],
   nonce: 0,
   gasLimit: 0,
-  gasPrice: 39000000000
+  gasPrice: 19000000000
 };
 const hash = Hash.executeMessageHash(domain, metatx);
 wallet.sign(hash).then((value) => {
@@ -164,8 +164,7 @@ curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARD
          "signer": "ADDRESS_OF_THE_SIGNER",
         "value": "0",
         "nonce": "0",
-        "to": "0x0000000000000000000000000000000000000000",
-        "gas_price_limit": "39000000000"
+        "gas_price_limit": "19000000000"
     },
     "signature": "SIGNATURE_OF_THE_MESSAGE"
 }'
