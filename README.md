@@ -55,7 +55,7 @@ To deploy a forwarder execute this request:
 curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders' \
 --header 'apikey: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
---data '{"owner": "0xf845b2501A69eF480aC577b99e96796c2B6AE88E"}'
+--data '{"owner": "YOUR_OWNER_ADDRESS"}'
 ```
 
 You get:
