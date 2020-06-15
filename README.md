@@ -95,15 +95,15 @@ npm install @rocksideio/rockside-wallet-sdk
 On index.js add:
 
 ```javascript
-const  Wallet = require(‘@rocksideio/rockside-wallet-sdk/lib/wallet.js’)
-const  Hash = require(‘@rocksideio/rockside-wallet-sdk/lib/hash.js’)
+const  Wallet = require('@rocksideio/rockside-wallet-sdk/lib/wallet.js')
+const  Hash = require('@rocksideio/rockside-wallet-sdk/lib/hash.js')
 const wallet = Wallet.BaseWallet.createRandom();
-const domain = { chainId: 3, verifyingContract: ‘0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e’ };
+const domain = { chainId: 3, verifyingContract: '0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e' };
 
 const metatx = {
-  relayer: “”,
+  relayer: "",
   signer: wallet.getAddress(),
-  to: “”,
+  to: "",
   value: 0,
   data: [],
   nonce: 0,
@@ -112,8 +112,8 @@ const metatx = {
 };
 const hash = Hash.executeMessageHash(domain, metatx);
 wallet.sign(hash).then((value) => {
-  console.log(“Signer: “+wallet.getAddress())
-  console.log(“Signature: “+value)
+  console.log("Signer: "+wallet.getAddress())
+  console.log("Signature: "+value)
 });
 ```
 
