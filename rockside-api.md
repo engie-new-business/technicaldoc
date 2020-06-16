@@ -171,13 +171,17 @@ Address of the forwarder contract
 
 {% api-method-headers %}
 {% api-method-parameter name="apikey" type="string" required=true %}
-Your API Key is available on Rockside Dashboard
+Your API Key is available on Rockside Dashboar
 {% endapi-method-parameter %}
 {% endapi-method-headers %}
 
 {% api-method-body-parameters %}
-{% api-method-parameter name="to" type="string" required=true %}
-Address of the contract that will receive the transaction.
+{% api-method-parameter name="destination\_contractA" type="string" required=true %}
+Address of the contract that will receive the transaction
+{% endapi-method-parameter %}
+
+{% api-method-parameter name="gas\_price\_limit" type="string" required=true %}
+Maximum gas price to use to relay the transaction.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="speed" type="string" required=true %}
@@ -185,7 +189,7 @@ Speed to relay your transaction: safelow \(around 30 min\), average \(around 5 m
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="data" type="object" required=true %}
-The parameters that the destination contract will receive. Object with to, value, data, gasPriceLimit, gasLimit, and nonce.
+The parameters that the destination contract will receive. Object with to, value, data, and nonce.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="signature" type="string" required=true %}
