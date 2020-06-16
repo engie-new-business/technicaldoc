@@ -78,7 +78,7 @@ On Ropsten, we fund your forwarder with 0.01 ETH when it's deployed. When your c
 
 As an example, let's call a smart contract that simply stores the address of the account that signed the relay message.
 
-The contract is deployed at: [0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e](https://ropsten.etherscan.io/address/0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e) on the Ropsten network.
+The contract is deployed at: [0x9DF66f93374117EFac8349151fE607F5347F5895](https://ropsten.etherscan.io/address/0x9DF66f93374117EFac8349151fE607F5347F5895) on the Ropsten network.
 
 We create a node project to be able to build the relay message.
 
@@ -97,18 +97,16 @@ On index.js add:
 ```javascript
 const  Wallet = require('@rocksideio/rockside-wallet-sdk/lib/wallet.js')
 const  Hash = require('@rocksideio/rockside-wallet-sdk/lib/hash.js')
-const wallet = Wallet.BaseWallet.createRandom();
-const domain = { chainId: 3, verifyingContract: '0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e' };
 
+const wallet = Wallet.BaseWallet.createRandom();
+
+const domain = { chainId: 3, verifyingContract: '0x9DF66f93374117EFac8349151fE607F5347F5895' };
 const metatx = {
-  relayer: "",
   signer: wallet.getAddress(),
   to: "",
   value: 0,
   data: [],
   nonce: 0,
-  gasLimit: 0,
-  gasPrice: 19000000000
 };
 const hash = Hash.executeMessageHash(domain, metatx);
 wallet.sign(hash).then((value) => {
@@ -158,7 +156,7 @@ curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARD
 --header 'apikey: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
-    "destination_contract": "0x21675837c2B5c6d60bF75419e0b6Ced01c5c0f0e",
+    "destination_contract": "0x9DF66f93374117EFac8349151fE607F5347F5895",
     "speed": "average",
     "data": {
         "signer": "ADDRESS_OF_THE_SIGNER",
