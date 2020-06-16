@@ -158,11 +158,11 @@ curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARD
 --data '{
     "destination_contract": "0x9DF66f93374117EFac8349151fE607F5347F5895",
     "speed": "average",
+    "gas_price_limit": "19000000000"
     "data": {
         "signer": "ADDRESS_OF_THE_SIGNER",
         "value": "0",
         "nonce": "0",
-        "gas_price_limit": "19000000000"
     },
     "signature": "SIGNATURE_OF_THE_MESSAGE"
 }'
