@@ -13,8 +13,6 @@ The parameters to be included on the signed message are:
 * **value**:  can be used  to allow user owning ether/token to perform transactions.
 * **data**: bytes to be executed.
 * **nonce**: nonce value used by the signer. It's a 2 dimensional nonce represented as a 256 bit integer split in two. See [replay protection page](replay-protection.md)
-* **gas limit**: maximum gas fee amount for this transaction to be relayed. Use 0 if not limit **\# Really Need it ?**
-* **gas price limit**: The maximum gas price to use to refund the gas consumed by the transaction.
 
 At Rockside we follow [EIP-712](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-712.md) to structure the relay message.
 
