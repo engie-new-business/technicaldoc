@@ -162,7 +162,7 @@ curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARD
     "data": {
         "signer": "ADDRESS_OF_THE_SIGNER",
         "value": "0",
-        "nonce": "0",
+        "nonce": "0"
     },
     "signature": "SIGNATURE_OF_THE_MESSAGE"
 }'
