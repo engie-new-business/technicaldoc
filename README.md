@@ -1,5 +1,7 @@
 # 🚀 Getting started
 
+*Estimated time to complete this guide: less than 10 minutes*
+
 Rockside relayer is a non-custodial transaction delivery service. When sending a transaction to Rockside, you provide:
 
 * the `gas price limit` which is the maximum price you want to apply to the transaction
