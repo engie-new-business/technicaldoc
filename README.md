@@ -1,6 +1,6 @@
 # 🚀 Getting started
 
-*Estimated time to complete this guide: less than 10 minutes*
+_Estimated time to complete this guide: less than 10 minutes_
 
 Rockside relayer is a non-custodial transaction delivery service. When sending a transaction to Rockside, you provide:
 
