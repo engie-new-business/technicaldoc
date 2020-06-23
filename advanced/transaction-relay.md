@@ -24,6 +24,8 @@ When the message is created and signed, it's sent to Rockside with a chosen spee
 2. **Choose the appropriate EOA**: Rockside manages different pools of EOA to send transactions. A pool of EOA for each available speed. This way, we guarantee that a "fast" transaction will not be slowed down by a transaction with a "safelow" speed. It's like on the highway, each transaction has its own queue depending on its speed.
 3. **The message is included within a transaction**: Using the corresponding EOA a transaction containing the signed message of the user is sent to the user's Forwarder. The gas price used by Rockside is in accordance with the speed requested.
 
+The source code of Forwarder contract is available[ on Github](https://github.com/rocksideio/contracts/blob/master/contracts/Forwarder.sol).
+
 ### The Forwarder validates the message and calls the destination contract
 
 1. **Message signature validation**: The Forwarder verifies that the signature corresponds to the signer and the parameters of the transaction.
