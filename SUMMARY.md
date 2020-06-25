@@ -1,7 +1,8 @@
 # Table of contents
 
 * [🚀 Getting started](README.md)
-* [Relay API](rockside-api.md)
+* [📖 Relay API](rockside-api.md)
+* [🧩 Exemples](exemples.md)
 
 ## Advanced
 
