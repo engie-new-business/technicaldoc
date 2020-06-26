@@ -11,7 +11,7 @@ We make sure your transaction is then executed at the best price in respect to t
 
 ## What problem are we solving?
 
-Sometimes Ethereum transactions are stuck or lost. Often to solve this, developers overpay transactions and must remain on-call to unblock them.
+Including transactions in Blockchain can be difficult and it hurts the user experience. Gaseless transactions are a good way to improve this, but their implementation is complex. To solve this problem, developers overpay transactions and must remain on-call to unblock them.
 
 Our solution is a new approach to deal with this situation.
 
