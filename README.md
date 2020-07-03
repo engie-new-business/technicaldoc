@@ -223,7 +223,7 @@ You will get:
 
 ## Go further...
 
-Check our demo app to see how to build a simple dApp that allow user to interact with a smart-contract without having ETH.
+Check out our demo app to see how to create a simple dApp that allows users to interact with a smart contract without having ETH.
 
 {% page-ref page="exemples.md" %}
 
