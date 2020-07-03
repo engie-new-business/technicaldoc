@@ -221,3 +221,11 @@ You will get:
 }
 ```
 
+## Go further...
+
+Check our demo app to see how to build a simple dApp that allow user to interact with a smart-contract without having ETH.
+
+{% page-ref page="exemples.md" %}
+
+
+
