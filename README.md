@@ -99,21 +99,35 @@ On index.js add:
 ```javascript
 const  Wallet = require('@rocksideio/rockside-wallet-sdk/lib/wallet.js')
 const  Hash = require('@rocksideio/rockside-wallet-sdk/lib/hash.js')
+const  Web3 = require('web3')
+
+const web3 = new Web3()
 
 const wallet = Wallet.BaseWallet.createRandom();
 
-const domain = { chainId: 3, verifyingContract: '0x9DF66f93374117EFac8349151fE607F5347F5895' };
+const voteContractAddress = "0xFb428d37AcC708F37A40c8D95d723e1Aea49cc07"
+const voteContractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"no","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bool","name":"value","type":"bool"}],"name":"vote","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"yes","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]
+
+var voteContract =  new web3.eth.Contract(voteContractABI, voteContractAddress)
+
+const messageData = voteContract.methods.vote(true).encodeABI();
+
+const domain = { chainId: 3, verifyingContract: 'YOUR_RELAYER_ADDRESS' };
+
 const metatx = {
   signer: wallet.getAddress(),
-  to: "",
-  value: 0,
-  data: [],
+  to: voteContractAddress,
+  data: messageData,
   nonce: 0,
 };
+
 const hash = Hash.executeMessageHash(domain, metatx);
 wallet.sign(hash).then((value) => {
-  console.log("Signer: "+wallet.getAddress())
+  console.log("Message Signer: "+wallet.getAddress())
+  console.log("Message To: "+voteContractAddress)
+  console.log("Message Data: "+messageData)
   console.log("Signature: "+value)
+
 });
 ```
 
@@ -126,8 +140,10 @@ node index.js
 You get:
 
 ```bash
-Signer: 0xeaD23030fe26C5965FDf6D5C72C575689E2F51D2
-Signature: 0xf68b22a18b28ec88751a270ba1575634134f09847ed36587fbc51d5d2de1aef927d8cec7d7d0f870c7fc5ecfd59e9407f5b2c0ce0824dc988de427aaede89f681c
+Message Signer: 0x857782111AFbC67c6338547854D4Db307F748B60
+Message To: 0xFb428d37AcC708F37A40c8D95d723e1Aea49cc07
+Message Data: 0x4b9f5c980000000000000000000000000000000000000000000000000000000000000001
+Signature: 0x48df3199c6ac37c4773a917980c1095b100a75a57a279037d03f1a0190781282131aaa54f533205b8f01ff5bddebf6be5e36ed2a73d9dd3a970b4ad2c14b5d8c1c
 ```
 
 Keep those two parameters, you will use it to call Rockside API.
@@ -158,12 +174,12 @@ curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARD
 --header 'apikey: YOUR_API_KEY' \
 --header 'Content-Type: application/json' \
 --data '{
-    "destination_contract": "0x9DF66f93374117EFac8349151fE607F5347F5895",
     "speed": "average",
     "gas_price_limit": "19000000000",
-    "data": {
+    "message": {
         "signer": "ADDRESS_OF_THE_SIGNER",
-        "value": "0",
+        "to": "0xFb428d37AcC708F37A40c8D95d723e1Aea49cc07",
+        "data": "0x4b9f5c980000000000000000000000000000000000000000000000000000000000000001"
         "nonce": "0"
     },
     "signature": "SIGNATURE_OF_THE_MESSAGE"
