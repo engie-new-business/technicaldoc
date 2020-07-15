@@ -1,4 +1,4 @@
-# Smart wallet API
+# 📖 Smart wallet API
 
 {% api-method method="post" host="https://api.rockside.io/" path="ethereum/:network/smartwallets" %}
 {% api-method-summary %}
