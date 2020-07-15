@@ -38,17 +38,17 @@ The destination contract [is called with "data+signer"](https://github.com/rocks
 
 ```text
 function _msgSender() internal view returns (address ret) {
-		address sender = msg.sender;
-		if (msg.data.length >= 24 && msg.sender == authorizedForwarder) {
-			assembly {
-				sender := shr(96,calldataload(sub(calldatasize(),20)))
-			}
-		}
-		return sender;
-	}
+        address sender = msg.sender;
+        if (msg.data.length >= 24 && msg.sender == authorizedForwarder) {
+            assembly {
+                sender := shr(96,calldataload(sub(calldatasize(),20)))
+            }
+        }
+        return sender;
+    }
 ```
 
-This function is used for your contract to know if it was called by a meta transaction or a normal transaction. 
+This function is used for your contract to know if it was called by a meta transaction or a normal transaction.
 
 You can see an example of implementation in [our SmartWallet contract](https://github.com/rocksideio/contracts/blob/master/contracts/SmartWallet.sol).
 

@@ -82,7 +82,7 @@ Your API Key is available on Rockside Dashboard
 List of your forwarders
 {% endapi-method-response-example-description %}
 
-```
+```text
 [
     "0x7Bb7703f2c601A54b484ADd52a07AFAD9C9F495e",
     "0x57732F6610623D944c2150C8E394e44f37b18357"

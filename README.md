@@ -32,7 +32,7 @@ Once accepted, we ensure your transaction is validated at the best price at your
 * **Gas price limit**: Maximum gas price value in wei, you are willing to apply to your transaction.
 * **Meta-transactions**: To relay your transactions we use the concept of meta-transactions, wrapping your signed message in a new transaction. More  on [meta-transactions page](https://github.com/rocksideio/technicaldoc/tree/1976743e9a75dae477fe57fe11e634ee36992cc2/advanced/meta-transaction.md).
 * **Gasless transaction:** Thanks to meta-transactions, Rockside allows you to pay gas fees for your DApp's users. They no longer need ethers to interact with your DApp.
-* **Transaction auto replay**: We monitor your transaction and we replace it with one with a higher gas price when necessary to validate your transaction according to your requested speed. More on [transaction replay page](advanced/replay.md).
+* **Transaction auto replay**: We monitor your transaction and we replace it with one with a higher gas price when necessary to validate your transaction according to your requested speed. More on [transaction replay page](https://github.com/rocksideio/technicaldoc/tree/9cfac19c42deb1f642ed99865999106aaf5c8c75/advanced/replay.md).
 * **Pool of signers**: We manage a pool of signers with a [multi-dimensionnal replay protection](advanced/replay-protection.md) to guarantee no stuck transactions.
 * **Transaction batch** You can group your transactions in a batch. You then have an atomic operation and your transactions will be executed on chain within a single transaction.
 * **Tracking ID**: When sending a transaction to Rockside, we also provide you with its tracking ID. Use it to have the latest and automatically updated status of your transaction even in case of replays and other actions taken.
@@ -242,6 +242,4 @@ You will get:
 Check out our demo app to see how to create a simple dApp that allows users to interact with a smart contract without having ETH.
 
 {% page-ref page="exemples.md" %}
-
-
 
