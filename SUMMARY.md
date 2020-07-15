@@ -10,7 +10,3 @@
 * [Transaction relay](advanced/transaction-relay.md)
 * [Replay protection](advanced/replay-protection.md)
 
----
-
-* [FAQ](faq.md)
-
