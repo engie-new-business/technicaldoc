@@ -10,7 +10,6 @@ The parameters to be included on the signed message are:
 
 * **signer**: address of the account who signed the message. The user who want to interact with the destination contract.
 * **to**: if the destination contract has to interact with another account \(contract or EOA\), this field can be used \(for example to transfer tokens\).
-* **value**:  can be used  to allow user owning ether/token to perform transactions.
 * **data**: bytes to be executed.
 * **nonce**: nonce value used by the signer. It's a 2 dimensional nonce represented as a 256 bit integer split in two. See [replay protection page](replay-protection.md)
 
@@ -35,11 +34,21 @@ The source code of Forwarder contract is available[ on Github](https://github.co
 
 ### The transaction is executed
 
-The destination contract has to implement the following method:
+The destination contract [is called with "data+signer"](https://github.com/rocksideio/contracts/blob/master/contracts/Forwarder.sol#L110). To be compatible with Rockside's forwarder, the destination contract must use a special function instead of the usual `msg.sender`
 
 ```text
-relayExecute(signer, to, value, data, gasLimit, gasPrice, nonce)
+function _msgSender() internal view returns (address ret) {
+		address sender = msg.sender;
+		if (msg.data.length >= 24 && msg.sender == authorizedForwarder) {
+			assembly {
+				sender := shr(96,calldataload(sub(calldatasize(),20)))
+			}
+		}
+		return sender;
+	}
 ```
 
-This method has to be only accessible by the forwarder contract \(the forwarder is in charge of validating the signature and the nonce\). With the received parameters, the transaction is executed on behalf of the signer.
+This function is used for your contract to know if it was called by a meta transaction or a normal transaction. 
+
+You can see an example of implementation in [our SmartWallet contract](https://github.com/rocksideio/contracts/blob/master/contracts/SmartWallet.sol).
 
