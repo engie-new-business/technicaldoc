@@ -241,5 +241,5 @@ You will get:
 
 Check out our demo app to see how to create a simple dApp that allows users to interact with a smart contract without having ETH.
 
-{% page-ref page="exemples.md" %}
+{% page-ref page="relayer/exemples.md" %}
 

@@ -1,8 +1,11 @@
 # Table of contents
 
 * [🚀 Getting started](README.md)
-* [📖 Relay API](rockside-api.md)
-* [🧩 Examples](exemples.md)
+
+## RELAYER
+
+* [📖 Relay API](relayer/rockside-api.md)
+* [🧩 Examples](relayer/exemples.md)
 
 ## Smart Wallet
 
