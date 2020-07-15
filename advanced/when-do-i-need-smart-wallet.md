@@ -1,4 +1,4 @@
-# Smart wallet ?
+# Smart wallet
 
 ## When do I need a smart wallet ?
 
@@ -17,6 +17,8 @@ Rockside provides an [implementation of  smart wallet](https://github.com/rocksi
 User signs messages in order to control their smart-wallet so they can approve or send ERC20 tokens. The dApps with its Forwarder contract relay the transaction so users do not have to pay for the gas. The signature and the nonce are verified in the forwarder contract.
 
 An example of calling HEX Smartcontract with a Rockside Smartwallet threw a Forwarder is [available here](https://github.com/rocksideio/Demo-Smartwallet-Hex).
+
+## Smart wallet API
 
 
 
