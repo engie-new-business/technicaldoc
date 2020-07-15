@@ -8,7 +8,7 @@ For those use cases the use of a smart wallet can be relevant. In order to user 
 
 ### How Smart Wallet works with Forwarder contracts ?
 
-Rockside provides an [implementation of  smart wallet](https://github.com/rocksideio/contracts/blob/master/contracts/SmartWallet.sol) compatible with the Forwarder contract. You are free to develop your own implementation or use Rockside Smartwallet API to deploy it for your users.
+Rockside provides an [implementation of  smart wallet](https://github.com/rocksideio/contracts/blob/master/contracts/SmartWallet.sol) compatible with the Forwarder contract. You are free to develop your own implementation or use [Rockside Smartwallet AP](https://docs.rockside.io/smart-wallet/smart-wallet-api)I to deploy it for your users.
 
 ![Relay transactions to user&apos;s smartwallet.](../.gitbook/assets/tx-forward-smartwallet.png)
 
