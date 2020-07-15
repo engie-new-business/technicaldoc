@@ -7,6 +7,7 @@
 ## Advanced
 
 * [Smart wallet](advanced/when-do-i-need-smart-wallet.md)
+* [📖 Smart wallet API](advanced/smart-wallet-api.md)
 * [Transaction relay](advanced/transaction-relay.md)
 * [Replay protection](advanced/replay-protection.md)
 
