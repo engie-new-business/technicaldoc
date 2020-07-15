@@ -1,4 +1,6 @@
-# When do I need Smart wallet ?
+# Smart wallet ?
+
+## When do I need a smart wallet ?
 
 Meta transaction and message relay is really great, it allows to separate the intention of the user \(example to interact with a dApp\) and the transmission of his intentions via a transaction. The consequence is that the transaction sender is not the one who interact with the dApp.
 

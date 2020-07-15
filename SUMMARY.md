@@ -1,19 +1,13 @@
 # Table of contents
 
 * [🚀 Getting started](README.md)
+* [📖 Relay API](rockside-api.md)
 * [🧩 Examples](exemples.md)
-
-## RELAYER
-
-* [📖 Relay API](relayer/rockside-api.md)
-
-## Smart Wallet
-
-* [📖 Smart wallet API](smart-wallet/smart-wallet-api.md)
-* [When do I need Smart wallet ?](smart-wallet/when-do-i-need-smart-wallet.md)
 
 ## Advanced
 
+* [Smart wallet ?](advanced/when-do-i-need-smart-wallet.md)
+* [📖 Smart wallet API](advanced/smart-wallet-api.md)
 * [Transaction relay](advanced/transaction-relay.md)
 * [Replay protection](advanced/replay-protection.md)
 
