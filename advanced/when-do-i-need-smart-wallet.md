@@ -60,7 +60,7 @@ Address of the forwarder to trust for the relay.
 
 {% endapi-method-response-example-description %}
 
-```
+```javascript
 {
     "address": "0x07672cf263BeB920B34b2740596b8B4a28b25D47",
     "transaction_hash": "0xf3ad76a9879a60c1bde76f806d463d0f378e2d1ace78eb62bbde40561f77df36",
