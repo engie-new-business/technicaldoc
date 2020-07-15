@@ -1,6 +1,6 @@
 # Smart wallet
 
-## When do I need a smart wallet ?
+### When do I need a smart wallet ?
 
 Meta transaction and message relay is really great, it allows to separate the intention of the user \(example to interact with a dApp\) and the transmission of his intentions via a transaction. The consequence is that the transaction sender is not the one who interact with the dApp.
 
@@ -18,7 +18,7 @@ User signs messages in order to control their smart-wallet so they can approve o
 
 An example of calling HEX Smartcontract with a Rockside Smartwallet threw a Forwarder is [available here](https://github.com/rocksideio/Demo-Smartwallet-Hex).
 
-## Smart wallet API
+### Smart wallet API
 
 {% api-method method="post" host="https://api.rockside.io/" path="ethereum/:network/smartwallets" %}
 {% api-method-summary %}
