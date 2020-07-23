@@ -216,7 +216,7 @@ Signature of the parameters present in the message fields.
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="https://api.rockside.io" path="/ethereum/:network/transactions/:tracking\_id" %}
+{% api-method method="get" host="https://api.rockside.io" path="/ethereum/:network/transactions/:id" %}
 {% api-method-summary %}
 Get transaction infos
 {% endapi-method-summary %}
