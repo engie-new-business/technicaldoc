@@ -125,7 +125,7 @@ Your API Key is available on Rockside Dashboard
 The public address of the EOA that will sign the relay message.
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="channel\_id" type="string" required=false %}
+{% api-method-parameter name="channel\_id" type="string" required=true %}
 The channel to use to .get the nonce.
 {% endapi-method-parameter %}
 {% endapi-method-body-parameters %}
@@ -134,13 +134,18 @@ The channel to use to .get the nonce.
 {% api-method-response %}
 {% api-method-response-example httpCode=200 %}
 {% api-method-response-example-description %}
-Returns the nonce to add on your message and the address of the relayer that will be on charge of sending your meta transaction.
+Returns the nonce and the gas price prices. You can choose a gas price and use it has `gas_price_limit` for "relay a transaction" route.
 {% endapi-method-response-example-description %}
 
 ```text
 {
-    "nonce": "0",
-    "relayer": "0xdd0f36E17474E8CbF9C4e483D02a1CF34f41550A"
+    "nonce": "4",
+    "gas_prices": {
+        "fast": "81000000000",
+        "fastest": "98000000000",
+        "safelow": "57000000000",
+        "standard": "66000000000"
+    }
 }
 ```
 {% endapi-method-response-example %}
@@ -185,7 +190,7 @@ Speed to relay your transaction: safelow \(around 30 min\), average \(around 5 m
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="message" type="object" required=true %}
-The parameters that the destination contract will receive. Object with to, data, and nonce.
+The parameters that the destination contract will receive. Object with `signer`, `to`, `data` and `nonce`.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="signature" type="string" required=true %}
@@ -227,8 +232,8 @@ Retrieve informations about a transaction relayed.
 Available network are: mainnet, ropsten
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="tracking\_id\|transaction\_hash" type="string" required=true %}
-Tracking ID or transaction hash of your transaction. Returned by the relay service when sending your transaction. \(Use the tracking ID to have the latest and automatically updated status of your transaction even in case of replays and other actions taken.\)
+{% api-method-parameter name="id" type="string" required=true %}
+`transaction_hash` or `tracking_id`. Returned by the relay service when sending your transaction. Use the tracking ID to have the latest and automatically updated status of your transaction even in case of replays and other actions taken.
 {% endapi-method-parameter %}
 {% endapi-method-path-parameters %}
 
