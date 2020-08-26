@@ -16,7 +16,7 @@ Checkout the [official website](https://gnosis-safe.io/), the [documentation](ht
 
 ### Integration example
 
-A simple example on how to use Rockside with Gnosis Safe Wallet is disponible [here](https://github.com/rocksideio/rockside-integration-examples/gnosis-safe/). 
+A simple example on how to use Rockside with Gnosis Safe Wallet is disponible [here](https://github.com/rocksideio/rockside-integration-examples/tree/master/gnosis-safe). 
 
 
 
