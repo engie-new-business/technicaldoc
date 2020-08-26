@@ -6,11 +6,17 @@
 
 ## Advanced
 
-* [Smart wallet](advanced/when-do-i-need-smart-wallet.md)
+* [Smart wallet](advanced/when-do-i-need-smart-wallet/README.md)
+  * [Gnosis Safe](advanced/when-do-i-need-smart-wallet/gnosis-safe.md)
+  * [Rockside Smart Wallet](advanced/when-do-i-need-smart-wallet/rockside-smart-wallet.md)
 * [Transaction relay](advanced/transaction-relay.md)
 * [Replay protection](advanced/replay-protection.md)
 
 ---
 
 * [FAQ](faq.md)
+
+## smart wallets
+
+* [Untitled](smart-wallets/untitled.md)
 
