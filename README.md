@@ -11,9 +11,7 @@ We make sure your transaction is then executed at the best price in respect to t
 
 ## What problem are we solving?
 
-Including transactions in Blockchain can be difficult and it hurts the user experience. Gaseless transactions are a good way to improve this, but their implementation is complex. To solve this problem, developers overpay transactions and must remain on-call to unblock them.
-
-Our solution is a new approach to deal with this situation.
+Sometimes Ethereum transactions are stuck or lost. To attempt to solve this problem, developers overpay transactions and must remain on-call to unblock them. Rockside is a transaction relayer for sending Blockchain transactions at a fixed and predetermined price and time. Rockside ensure the validation of your transactions and bears any additional gas.
 
 ## Transaction Relay overview
 
