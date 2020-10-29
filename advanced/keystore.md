@@ -10,7 +10,7 @@ Create EOA Account
 {% endapi-method-summary %}
 
 {% api-method-description %}
-Create an account \(EOA\) on your rockside wallet. Those accounts will need ether to send transaction.
+Create an account \(EOA\). Those accounts will need ether to send transaction.
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -28,7 +28,7 @@ Your API key is available on Rockside Dashboard.
 
 {% endapi-method-response-example-description %}
 
-```
+```text
 {
     "address": "0x273e3d3ae721f0137d16cbd168c495e70e046dd4"
 }
@@ -49,11 +49,11 @@ curl -X POST \
 
 {% api-method method="get" host="https://api.rockside.io" path="/ethereum/eoa" %}
 {% api-method-summary %}
-List  EOA Accounts
+List EOA Accounts
 {% endapi-method-summary %}
 
 {% api-method-description %}
-List all your rockside wallet accounts \(EOA\).
+List all your accounts \(EOA\).
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -71,7 +71,7 @@ Your API key is available on Rockside Dashboard.
 
 {% endapi-method-response-example-description %}
 
-```
+```text
 [
     "0x60d44d28c826cff5d05ee57526e20103cdac1c9a",
     "0x642aa2e540bb7172c487d5e2c315ad81b27070af",
@@ -141,7 +141,7 @@ GasPrice of the transaction
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="gas" type="string" required=false %}
-Gas of the transaction 
+Gas of the transaction
 {% endapi-method-parameter %}
 {% endapi-method-body-parameters %}
 {% endapi-method-request %}
@@ -152,7 +152,7 @@ Gas of the transaction
 
 {% endapi-method-response-example-description %}
 
-```
+```text
 {
     "signed_transaction": "0xf85f01808276c0947c869a955e4846e5f6e28fb525b0200d03159e1680801ba09ca643357e2e3e4c0ee9f8a61b1ffb377b6acd453b5a1582fde4360888b31f34a072718acf37e7bcc4ad46e22a8eb6e386e1ad8629e57a3c5ceaccf55a325367a7"
 }
@@ -210,7 +210,7 @@ Keccak hash of the message to sign
 
 {% endapi-method-response-example-description %}
 
-```
+```text
 {
     "signed_message": "0xc352bbfc7049da9890467b6254faf4dc3f2743ad5531ded061df4814295f185365daca00a3b1fc60a0cbf88039466bb70c071d142d89ab45d9c15c4e77fae28001"
 }
