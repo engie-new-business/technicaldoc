@@ -10,7 +10,6 @@
   * [Gnosis Safe](advanced/when-do-i-need-smart-wallet/gnosis-safe-1.md)
 * [Transaction relay](advanced/transaction-relay.md)
 * [Replay protection](advanced/replay-protection.md)
-* [Keystore](advanced/keystore.md)
 
 ---
 
