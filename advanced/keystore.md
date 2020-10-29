@@ -169,11 +169,14 @@ Gas of the transaction
 ```bash
 curl -X POST \
   https://api.rockside.io/ethereum/eoa/0x7e4470895cc2815cb09b05ad480574d518b4a92b/sign \
-  -H 'apikey: YOUR_API_KEY'
+  -H 'apikey: YOUR_API_KEY' \
   -d '{"from":"0x7e4470895cc2815cb09b05ad480574d518b4a92b",
-  "to":"0x7c869a955e4846e5f6e28fb525b0200d03159e16",
-  "gas":"0x76c0",
-  "gasPrice":"0x0","value":"0x0", "nonce":"1" }'
+"to":"0x7c869a955e4846e5f6e28fb525b0200d03159e16",
+"gas":"0x76c0",
+"gasPrice":"0x0",
+"value":"0x0",
+"network_id": "1",
+"nonce":"1" }'
 ```
 
 {% api-method method="post" host="https://api.rockside.io" path="/ethereum/eoa/EOA\_ADDRESS/sign-message" %}
@@ -225,9 +228,9 @@ Keccak hash of the message to sign
 **Example**:
 
 ```bash
-curl -X POST \
-  https://api.rockside.io/ethereum/eoa/PUBLIC_ADDRESS/sign-messsage \
-  -H 'apikey: YOUR_API_KEY'
-  -d '{"message":"0x3877c10b1c024084aef6141a712640a7fad4bf9cd7ba195f112e2543e229c8bb"}'
+curl -X POST https://api.rockside.io/ethereum/eoa/0x7e4470895cc2815cb09b05ad480574d518b4a92b/sign-message \
+-H 'apikey: API_KEY' \
+-H 'Content-Type: application/json' \
+-d '{"message":"0x3877c10b1c024084aef6141a712640a7fad4bf9cd7ba195f112e2543e229c8bb" }'
 ```
 
