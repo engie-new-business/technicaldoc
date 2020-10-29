@@ -4,6 +4,8 @@ description: Keys management system
 
 # Keystore
 
+Rockside provides a key management system. You can use it as  a signature as a service to sign transactions and messages.
+
 {% api-method method="post" host="https://api.rockside.io" path="/ethereum/eoa" %}
 {% api-method-summary %}
 Create EOA Account
