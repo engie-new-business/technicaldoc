@@ -9,6 +9,8 @@ Rockside relayer is a non-custodial transaction delivery service. When sending a
 
 We make sure your transaction is then executed at the best price in respect to the delay.
 
+{% embed url="https://www.youtube.com/watch?v=psR6ala0ksI" %}
+
 ## What problem are we solving?
 
 Sometimes Ethereum transactions are stuck or lost. To attempt to solve this problem, developers overpay transactions and must remain on-call to unblock them. Rockside is a transaction relayer for sending Blockchain transactions at a fixed and predetermined price and time. Rockside ensure the validation of your transactions and bears any additional gas.
