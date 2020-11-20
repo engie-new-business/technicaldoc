@@ -1,4 +1,4 @@
-# 📖 Relay API
+# 📖 Forward API
 
 {% api-method method="post" host="https://api.rockside.io" path="/ethereum/:network/forwarders" %}
 {% api-method-summary %}
