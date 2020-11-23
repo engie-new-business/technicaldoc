@@ -2,7 +2,7 @@
 
 * [🚀 Getting started](README.md)
 * [⛽️ Relay API](relay.md)
-* [About Rockside](about-rockside.md)
+* [How it works?](about-rockside.md)
 
 ## Advanced
 
