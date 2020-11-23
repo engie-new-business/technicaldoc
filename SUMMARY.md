@@ -11,7 +11,3 @@
 * [Forwarder](advanced/rockside-api.md)
 * [Keystore](advanced/keystore.md)
 
----
-
-* [FAQ](faq.md)
-
