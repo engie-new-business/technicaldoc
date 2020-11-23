@@ -8,7 +8,7 @@ To relai a transaction, send the **destination contract address, the data and th
 
 On **Testnet** we accept to relay transactions to any destination and we do not check the refund Rockside will receive. 
 
-For **Mainnet** we accept to relay transactions to any [Gnosis smart wallet](https://docs.rockside.io/advanced/when-do-i-need-smart-wallet/gnosis). To authorize your destination contract, please [contact us](https://twitter.com/rockside_io) . We check the data sent to the destination contract to determinate if we will get refunded enough for network fees. 
+On **Mainnet** we accept to relay transactions to any [Gnosis smart wallet](https://docs.rockside.io/advanced/when-do-i-need-smart-wallet/gnosis). To authorize your destination contract, please [contact us](https://twitter.com/rockside_io) . We check the data sent to the destination contract to determinate if we will get refunded enough for network fees. 
 
 To know our expectations for **gasprice** and **refund address**,  call  our[ relay params AP](https://docs.rockside.io/relay#get-relay-params)I. That will give a list of `speed` associated to a `gas_price` and a `relayer`. Then use those to create the `data` required by the destination. 
 
