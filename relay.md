@@ -4,13 +4,13 @@ description: Unlock the best of Ethereum with Rockside relays.
 
 # ⛽️ Relay API
 
-To relai a transaction, send the **destination contract address, the data and the speed** you want**.**  Available speeds are `safelow` \(around 30 minutes\), `average` or `standard`\(around 5 minutes\), `fast` \(around 2 minutes\), `fastest` \(around 30 seconds\). 
+To relay a transaction, send the **destination contract address, the data and the speed** you want**.**  Available speeds are `safelow` \(around 30 minutes\), `average` or `standard`\(around 5 minutes\), `fast` \(around 2 minutes\), `fastest` \(around 30 seconds\). 
 
 On **Testnet** we accept to relay transactions to any destination and we do not check the refund Rockside will receive. 
 
 On **Mainnet** we accept to relay transactions to any [Gnosis smart wallet](https://docs.rockside.io/advanced/when-do-i-need-smart-wallet/gnosis). To authorize your destination contract, please [contact us](https://twitter.com/rockside_io). We check the data sent to the destination contract to determine if we will be sufficiently refunded for network fees.
 
-To know our expectations for **gasprice** and **refund address**, call  our[ relay params AP](https://docs.rockside.io/relay#get-relay-params)I. That will give a list of `speed` associated to a `gas_price` and a `relayer`. Then use those to create the `data` required by the destination. 
+To know our expectations for **gasprice** and **refund address**, call our[ relay params AP](https://docs.rockside.io/relay#get-relay-params)I. That will give a list of `speed` associated to a `gas_price` and a `relayer`. Then use those to create the `data` required by the destination. 
 
 When the transaction is accepted, it will be included in the blockchain even if we have to pay more than the gas price that was specified.
 
