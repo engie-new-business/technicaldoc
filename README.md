@@ -94,5 +94,5 @@ You will get:
 
 This example run on Ropsten. For Mainnet you will have to implement in your contract a mechanism to refund Rockside for the gas fees.
 
-A example of refund can be found in the forward method of our [Forwarder contrac](https://github.com/rocksideio/contracts/blob/master/contracts/Forwarder.sol)t.
+An example of refund can be found in the forward method of our [Forwarder contrac](https://github.com/rocksideio/contracts/blob/master/contracts/Forwarder.sol)t.
 
