@@ -2,15 +2,13 @@
 
 * [🚀 Getting started](README.md)
 * [⛽️ Relay API](relay.md)
-* [📖 Forward API](rockside-api.md)
-* [🧩 Examples](exemples.md)
+* [About Rockside](about-rockside.md)
 
 ## Advanced
 
 * [Smart wallet](advanced/when-do-i-need-smart-wallet/README.md)
   * [Gnosis](advanced/when-do-i-need-smart-wallet/gnosis.md)
-* [Transaction relay](advanced/transaction-relay.md)
-* [Replay protection](advanced/replay-protection.md)
+* [Forwarder](advanced/rockside-api.md)
 * [Keystore](advanced/keystore.md)
 
 ---

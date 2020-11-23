@@ -1,192 +1,44 @@
 # 🚀 Getting started
 
-_Estimated time to complete this guide: less than 10 minutes_
-
-Rockside relayer is a non-custodial transaction delivery service. When sending a transaction to Rockside, you provide:
-
-* the `gas price limit` which is the maximum price you want to apply to the transaction
-* a chosen `speed` of inclusion in the blockchain
-
-We make sure your transaction is then executed at the best price in respect to the delay.
-
-{% embed url="https://www.youtube.com/watch?v=psR6ala0ksI" %}
-
-## What problem are we solving?
-
-Sometimes Ethereum transactions are stuck or lost. To attempt to solve this problem, developers overpay transactions and must remain on-call to unblock them. Rockside is a transaction relayer for sending Blockchain transactions at a fixed and predetermined price and time. Rockside ensure the validation of your transactions and bears any additional gas.
-
-## Transaction Relay overview
-
-![Relay overview](https://raw.githubusercontent.com/rocksideio/technicaldoc/master/images/tx-relay-overview.png)
-
-For more details go on [transaction relay page](advanced/transaction-relay.md).
-
-## How does it work?
-
-Depending on your given gas price limit, your requested speed and the current market gas prices, we decide whether or not to relay your transaction.
-
-Once accepted, we ensure your transaction is validated at the best price at your speed.
-
-* **API and SDK**: Send your transactions using our API and open source SDK \(JS, iOS\)
-* **Speed**: available speeds are `safelow` \(around 30 minutes\), `average` or `standard`\(around 5 minutes\), `fast` \(around 2 minutes\), `fastest` \(around 30 seconds\)
-* **Gas price limit**: Maximum gas price value in wei, you are willing to apply to your transaction.
-* **Meta-transactions**: To relay your transactions we use the concept of meta-transactions, wrapping your signed message in a new transaction. More  on [meta-transactions page](https://github.com/rocksideio/technicaldoc/tree/1976743e9a75dae477fe57fe11e634ee36992cc2/advanced/meta-transaction.md).
-* **Gasless transaction:** Thanks to meta-transactions, Rockside allows you to pay gas fees for your DApp's users. They no longer need ethers to interact with your DApp.
-* **Transaction auto replay**: We monitor your transaction and we replace it with one with a higher gas price when necessary to validate your transaction according to your requested speed. More on [transaction replay page](https://github.com/rocksideio/technicaldoc/tree/9cfac19c42deb1f642ed99865999106aaf5c8c75/advanced/replay.md).
-* **Pool of signers**: We manage a pool of signers with a [multi-dimensionnal replay protection](advanced/replay-protection.md) to guarantee no stuck transactions.
-* **Transaction batch** You can group your transactions in a batch. You then have an atomic operation and your transactions will be executed on chain within a single transaction.
-* **Tracking ID**: When sending a transaction to Rockside, we also provide you with its tracking ID. Use it to have the latest and automatically updated status of your transaction even in case of replays and other actions taken.
-
 ## Getting Started
 
-### Connect to Rockside
+As an example, let's call the method "hello" of a smart contract that simply stores "hello" messages.
 
-Go to [dashboard.rockside.io](https://dashboard.rockside.io) and connect using your github account. You will get your API key that will allow you to access our API.
+The **helloRockside** contract is deployed at: [0x4FD167973185AD2a968339172A936641fD31F3CD](https://ropsten.etherscan.io/address/0x4fd167973185ad2a968339172a936641fd31f3cd#code) on Ropsten network.
 
-### Deploy your Forwarder
+We will call the **hello**  method with the "**hello rockside**" as parameter.
 
-To relay your transaction, you need to deploy a Forwarder contract. Rockside covers transaction fees \(gas\) for this operation.
-
-You must specify an owner account. Only the owner can transfer funds from the Forwarder contract.
-
-By default forwarders only accept transactions coming from Rockside signers. Only the owner can modify the list of authorized senders.
-
-To deploy a forwarder execute this request:
+The data that represent this call is:
 
 ```bash
-curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders' \
---header 'apikey: YOUR_API_KEY' \
---header 'Content-Type: application/json' \
---data '{"owner": "YOUR_OWNER_ADDRESS"}'
+DATA: 0xa777d0dc0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000e68656c6c6f20726f636b73696465000000000000000000000000000000000000
 ```
 
-You get:
-
-```text
-{
-    "address": "0xa83E94cA4A9D92009C1Bf6dCA54b3E34D4463138",
-    "transaction_hash": "0x6663a81a1a827c4bf2301eb169de900c51d2b6e4e2c26d503dce10888f8cdee9",
-    "tracking_id": "01E9ZSDHMYYFMW3E1CVQ9ADVHK"
-}
-```
-
-### Send ether to your Forwarder
-
-Because the forwarder will payback for the transaction fees it needs to be funded in ether.
-
-On Ropsten, we fund your forwarder with 0.01 ETH when it's deployed. When your credit is consumed you have to fund it by sending ether to your Forwarder contract address.
-
-### Create your relay message
-
-As an example, let's call a smart contract that simply stores the address of the account that signed the relay message.
-
-The contract is deployed at: [0x9DF66f93374117EFac8349151fE607F5347F5895](https://ropsten.etherscan.io/address/0x9DF66f93374117EFac8349151fE607F5347F5895) on the Ropsten network.
-
-We create a node project to be able to build the relay message.
-
-```bash
-npm init
-```
-
-Install Rockside Wallet SDK
-
-```bash
-npm install @rocksideio/rockside-wallet-sdk
-```
-
-On index.js add:
+To generate the ABI encoded data, we used Web3 as follows:
 
 ```javascript
-const  Wallet = require('@rocksideio/rockside-wallet-sdk/lib/wallet.js')
-const  Hash = require('@rocksideio/rockside-wallet-sdk/lib/hash.js')
-const  Web3 = require('web3')
-
+const Web3 = require('web3')
 const web3 = new Web3()
 
-const wallet = Wallet.BaseWallet.createRandom();
+const helloContractAddress = "0xFb428d37AcC708F37A40c8D95d723e1Aea49cc07"
+const helloContractABI = [{"inputs":[{"internalType":"string","name":"helloMsg","type":"string"}],"name":"hello","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"helloMessages","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"}]
 
-const voteContractAddress = "0xFb428d37AcC708F37A40c8D95d723e1Aea49cc07"
-const voteContractABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"no","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bool","name":"value","type":"bool"}],"name":"vote","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"yes","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]
+var helloContract =  new web3.eth.Contract(helloContractABI, helloContractAddress)
+const data = helloContract.methods.hello("hello rockside").encodeABI();
 
-var voteContract =  new web3.eth.Contract(voteContractABI, voteContractAddress)
-
-const messageData = voteContract.methods.vote(true).encodeABI();
-
-const domain = { chainId: 3, verifyingContract: 'YOUR_RELAYER_ADDRESS' };
-
-const metatx = {
-  signer: wallet.getAddress(),
-  to: voteContractAddress,
-  data: messageData,
-  nonce: 0,
-};
-
-const hash = Hash.executeMessageHash(domain, metatx);
-wallet.sign(hash).then((value) => {
-  console.log("Message Signer: "+wallet.getAddress())
-  console.log("Message To: "+voteContractAddress)
-  console.log("Message Data: "+messageData)
-  console.log("Signature: "+value)
-
-});
+console.log("DATA: "+data);
 ```
 
-Run the script
+### Call Rockside Relay API
+
+Pass in the URL the **address of the destination contract** \(in our case the helloRockside contract\), in the body specify the **speed** and the **data.**  For more infos, check our [Relay API](https://docs.rockside.io/relay).
 
 ```bash
-node index.js
-```
-
-You get:
-
-```bash
-Message Signer: 0x857782111AFbC67c6338547854D4Db307F748B60
-Message To: 0xFb428d37AcC708F37A40c8D95d723e1Aea49cc07
-Message Data: 0x4b9f5c980000000000000000000000000000000000000000000000000000000000000001
-Signature: 0x48df3199c6ac37c4773a917980c1095b100a75a57a279037d03f1a0190781282131aaa54f533205b8f01ff5bddebf6be5e36ed2a73d9dd3a970b4ad2c14b5d8c1c
-```
-
-Keep those two parameters, you will use it to call Rockside API.
-
-### Relay your transaction
-
-To use Rockside API, you need to provide a speed and a gas price limit.
-
-Available speeds are:
-
-* safelow \(around 30 minutes\)
-* average/standard \(around 5 minutes\)
-* fast \(around 2 minutes\)
-* fastest \(around 30 seconds\)
-
-Depending on your choice, you have to specify your gas price limit. It defines the maximum gas price you agree to pay to execute your transaction at the requested speed.
-
-If you want to have an idea of the price to provide you can use [EthGasStation](https://ethgasstation.info).
-
-![EthGasStation](https://raw.githubusercontent.com/rocksideio/technicaldoc/master/images/ethGasStation.png)
-
-**Note**: EthGasStation gas prices are provided on Gwei on their front page, and as 10xGwei when using their API. Make sure to convert it to wei before sending the value to Rockside \(ex: 39 Gwei -&gt; 39000000000 Wei\)
-
-Let's use curl to relay your transaction:
-
-```bash
-curl --request POST 'https://api.rockside.io/ethereum/ropsten/forwarders/FORWARDER_ADDRESS' \
---header 'apikey: YOUR_API_KEY' \
+curl --request POST 'https://api.rockside.io/ethereum/ropsten/relay/0x4FD167973185AD2a968339172A936641fD31F3CD' \
 --header 'Content-Type: application/json' \
---data '{
-    "speed": "average",
-    "gas_price_limit": "19000000000",
-    "message": {
-        "signer": "ADDRESS_OF_THE_SIGNER",
-        "to": "0xFb428d37AcC708F37A40c8D95d723e1Aea49cc07",
-        "data": "0x4b9f5c980000000000000000000000000000000000000000000000000000000000000001"
-        "nonce": "0"
-    },
-    "signature": "SIGNATURE_OF_THE_MESSAGE"
-}'
-```
+--data '{"speed": "fast","data": "0xa777d0dc0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000e68656c6c6f20726f636b73696465000000000000000000000000000000000000"}'
 
-_Attention, the value of the data parameters \(gas\_price\_limit, to, ...\) must be the same used for signature generation._
+```
 
 You will get:
 
@@ -197,13 +49,14 @@ You will get:
 }
 ```
 
-You can follow your transaction on Etherscan with the `transaction_hash`. But since Rockside is susceptible to replay a stuck transaction, this hash value can changes.
+### Follow your transaction status
 
-So to keep track of your transaction - whatever happens to it - use the `tracking_id` as follow:
+You can follow your transaction on Etherscan with the `transaction_hash`. But because Rockside is susceptible to replay a stuck transaction, this hash value can changes.
+
+To keep track of your transaction - whatever happens to it - use the `tracking_id` as follow:
 
 ```bash
-curl --request GET 'https://api.rockside.io/ethereum/ropsten/transactions/TX_TRACKING_ID' \
---header 'apikey: YOUR_API_KEY'
+curl --request GET 'https://api.rockside.io/ethereum/ropsten/transactions/TX_TRACKING_ID'
 ```
 
 You will get:
@@ -237,9 +90,9 @@ You will get:
 }
 ```
 
-## Go further...
+### Go further
 
-Check out our demo app to see how to create a simple dApp that allows users to interact with a smart contract without having ETH.
+This example run on Ropsten. For Mainnet you will have to implement in your contract a mechanism to refund Rockside for the gas fees
 
-{% page-ref page="exemples.md" %}
+A example of refund can be found in the forward method of our [Forwarder contrac](https://github.com/rocksideio/contracts/blob/master/contracts/Forwarder.sol)t.
 
