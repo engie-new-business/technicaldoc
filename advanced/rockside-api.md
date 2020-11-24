@@ -78,6 +78,10 @@ mapping(address => mapping(uint128 => uint128)) public nonces;
     }
 ```
 
+### Get an API KEY
+
+To access the forwarder API you need an API Key.  It's available by registering on [Rockside Dashboard](https://dashboard.rockside.io/).
+
 {% api-method method="post" host="https://api.rockside.io" path="/ethereum/:network/forwarders" %}
 {% api-method-summary %}
 Deploy a Forwarder contract

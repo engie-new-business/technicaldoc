@@ -6,6 +6,8 @@ description: Keys management system
 
 Rockside provides a key management system. You can use it as a signature service to sign transactions and messages.
 
+To access the forwarder API you need an API Key.  It's available by registering on [Rockside Dashboard](https://dashboard.rockside.io/).
+
 {% api-method method="post" host="https://api.rockside.io" path="/ethereum/eoa" %}
 {% api-method-summary %}
 Create EOA Account
