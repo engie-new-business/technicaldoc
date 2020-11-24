@@ -6,7 +6,7 @@ As an example, let's call the method "hello" of a smart contract that simply sto
 
 The **helloRockside** contract is deployed at: [0x4FD167973185AD2a968339172A936641fD31F3CD](https://ropsten.etherscan.io/address/0x4fd167973185ad2a968339172a936641fd31f3cd#code) on Ropsten network.
 
-We will call the **hello**  method with the "**hello rockside**" as parameter.
+We will call the **hello**  method with "**hello rockside**" as parameter.
 
 The data that represent this call is:
 
